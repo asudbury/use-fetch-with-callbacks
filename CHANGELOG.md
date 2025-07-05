@@ -37,5 +37,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ Zero Dependencies: Lightweight with no external dependencies
 - ✅ Flexible Configuration: Customizable headers, base URLs, and error handling
 
-[Unreleased]: https://github.com/yourusername/use-fetch-with-callbacks/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/yourusername/use-fetch-with-callbacks/releases/tag/v1.0.0
+[Unreleased]: https://github.com/asudbury/use-fetch-with-callbacks/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/asudbury/use-fetch-with-callbacks/releases/tag/v1.0.0

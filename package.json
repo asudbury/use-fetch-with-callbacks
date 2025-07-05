@@ -60,12 +60,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/use-fetch-with-callbacks.git"
+    "url": "https://github.com/asudbury/use-fetch-with-callbacks.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/use-fetch-with-callbacks/issues"
+    "url": "https://github.com/asudbury/use-fetch-with-callbacks/issues"
   },
-  "homepage": "https://github.com/yourusername/use-fetch-with-callbacks#readme",
+  "homepage": "https://github.com/asudbury/use-fetch-with-callbacks#readme",
   "peerDependencies": {
     "react": "^18.0.0"
   },

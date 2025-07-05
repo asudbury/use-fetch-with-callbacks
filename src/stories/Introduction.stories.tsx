@@ -69,7 +69,7 @@ Explore the stories in this Storybook to see comprehensive examples and use case
 
 ## 🔗 Links
 
-- **[GitHub Repository](https://github.com/yourusername/use-fetch-with-callbacks)**
+- **[GitHub Repository](https://github.com/asudbury/use-fetch-with-callbacks)**
 - **[npm Package](https://www.npmjs.com/package/use-fetch-with-callbacks)**
 - **[API Documentation](/?path=/story/documentation--api-reference)**
 

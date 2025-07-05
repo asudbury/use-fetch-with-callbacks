@@ -23,11 +23,11 @@ npm install use-fetch-with-callbacks
 
 Explore live examples and comprehensive documentation in our **Storybook**:
 
-[**🚀 View Live Examples →**](https://yourusername.github.io/use-fetch-with-callbacks)
+[**🚀 View Live Examples →**](https://asudbury.github.io/use-fetch-with-callbacks)
 
 Or run locally:
 ```bash
-git clone https://github.com/yourusername/use-fetch-with-callbacks.git
+git clone https://github.com/asudbury/use-fetch-with-callbacks.git
 cd use-fetch-with-callbacks
 npm install
 npm run storybook

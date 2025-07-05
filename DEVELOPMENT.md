@@ -11,7 +11,7 @@ This guide is for developers who want to contribute to or run the Storybook docu
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/use-fetch-with-callbacks.git
+   git clone https://github.com/asudbury/use-fetch-with-callbacks.git
    cd use-fetch-with-callbacks
    ```
 
@@ -111,6 +111,6 @@ For maintainers only:
 
 If you encounter any issues:
 
-1. Check the [GitHub Issues](https://github.com/yourusername/use-fetch-with-callbacks/issues)
+1. Check the [GitHub Issues](https://github.com/asudbury/use-fetch-with-callbacks/issues)
 2. Create a new issue with detailed information
 3. Include code examples and error messages

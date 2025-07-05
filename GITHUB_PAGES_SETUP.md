@@ -34,7 +34,7 @@ Update the base path in `.storybook/main.ts`:
 ```typescript
 viteFinal: async (config) => {
   if (process.env.NODE_ENV === 'production') {
-    config.base = '/your-repository-name/'; // ← Change this to your actual repo name
+    config.base = '/use-fetch-with-callbacks/'; // ← Change this to your actual repo name
   }
   return config;
 },
@@ -47,7 +47,7 @@ Update the brand URL in `.storybook/manager.ts`:
 ```typescript
 const theme = create({
   // ...
-  brandUrl: 'https://github.com/yourusername/your-repository-name',
+  brandUrl: 'https://github.com/asudbury/use-fetch-with-callbacks',
   // ...
 });
 ```
@@ -60,7 +60,7 @@ The site will automatically deploy when you:
 
 1. Push to the `main` branch
 2. The GitHub Action will build and deploy Storybook
-3. Your site will be available at: `https://yourusername.github.io/your-repository-name/`
+3. Your site will be available at: `https://asudbury.github.io/use-fetch-with-callbacks/`
 
 ### Manual Deployment
 

@@ -4,7 +4,7 @@ import { create } from '@storybook/theming/create';
 const theme = create({
   base: 'light',
   brandTitle: 'useFetchWithCallbacks',
-  brandUrl: 'https://github.com/yourusername/use-fetch-with-callbacks',
+  brandUrl: 'https://github.com/asudbury/use-fetch-with-callbacks',
   brandImage: undefined, // You can add a logo URL here
   brandTarget: '_blank',
 
