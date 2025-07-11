@@ -1,19 +1,25 @@
-import '@testing-library/jest-dom';
+import { expect, vi, beforeEach } from 'vitest';
+import * as matchers from '@testing-library/jest-dom/matchers';
 
-// Mock fetch for testing
-(global as any).fetch = jest.fn();
+expect.extend(matchers);
 
-// Mock AbortController
-(global as any).AbortController = class {
+// Mock fetch for testing (if needed globally)
+globalThis.fetch = vi.fn();
+
+// Mock AbortController (if needed globally)
+globalThis.AbortController = class {
   signal = {
     aborted: false,
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    onabort: null,
+    reason: undefined,
+    throwIfAborted: vi.fn(),
+    dispatchEvent: vi.fn(),
   };
-  abort = jest.fn();
+  abort = vi.fn();
 };
 
-// Reset mocks before each test
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
