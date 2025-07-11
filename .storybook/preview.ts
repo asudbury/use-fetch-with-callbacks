@@ -11,7 +11,8 @@ const preview: Preview = {
     },
     docs: {
       description: {
-        component: 'A powerful React hook for HTTP requests with comprehensive callback support, request chaining, and TypeScript integration.',
+        component:
+          'A powerful React hook for HTTP requests with comprehensive callback support, request chaining, and TypeScript integration.',
       },
       toc: {
         contentsSelector: '.sbdocs-content',
@@ -21,15 +22,16 @@ const preview: Preview = {
         unsafeTocHtml: true,
       },
     },
-    options: {    storySort: {
-      order: [
-        'Introduction',
-        'API Reference',
-        'API Explorer',
-        'Request Chaining',
-        'Error Handling',
-      ],
-    },
+    options: {
+      storySort: {
+        order: [
+          'Introduction',
+          'API Reference',
+          'API Explorer',
+          'Request Chaining',
+          'Error Handling',
+        ],
+      },
     },
     backgrounds: {
       default: 'light',

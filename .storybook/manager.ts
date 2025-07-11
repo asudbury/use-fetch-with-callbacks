@@ -19,7 +19,8 @@ const theme = create({
   appBorderRadius: 6,
 
   // Typography
-  fontBase: '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  fontBase:
+    '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
   fontCode: 'Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
 
   // Text colors

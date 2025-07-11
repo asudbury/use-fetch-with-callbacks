@@ -10,12 +10,14 @@ This guide is for developers who want to contribute to or run the Storybook docu
 ## Development Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/asudbury/use-fetch-with-callbacks.git
    cd use-fetch-with-callbacks
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```

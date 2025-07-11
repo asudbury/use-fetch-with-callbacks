@@ -1,6 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import useFetchWithCallbacks from '../useFetchWithCallbacks';
-import { storyStyles, getButtonStyle, combineStyles } from './shared/storyStyles';
+import {
+  storyStyles,
+  getButtonStyle,
+  combineStyles,
+} from './shared/storyStyles';
 
 const ApiExplorer = () => {
   const [config, setConfig] = useState({
@@ -14,15 +18,17 @@ const ApiExplorer = () => {
 
   const [selectedPreset, setSelectedPreset] = useState<string>('');
   const [logs, setLogs] = useState<string[]>([]);
-  const [requestHistory, setRequestHistory] = useState<Array<{
-    id: number;
-    method: string;
-    url: string;
-    timestamp: string;
-    status: 'success' | 'error';
-    response?: unknown;
-    error?: string;
-  }>>([]);
+  const [requestHistory, setRequestHistory] = useState<
+    Array<{
+      id: number;
+      method: string;
+      url: string;
+      timestamp: string;
+      status: 'success' | 'error';
+      response?: unknown;
+      error?: string;
+    }>
+  >([]);
 
   const {
     fetchData,
@@ -32,36 +38,45 @@ const ApiExplorer = () => {
     patchData,
     loading,
     response,
-    error
+    error,
   } = useFetchWithCallbacks(config.endpoint, {
     baseUrl: config.baseUrl,
     timeout: config.timeout,
     headers: config.headers ? JSON.parse(config.headers) : undefined,
   });
 
-  const addLog = useCallback((message: string, type: 'info' | 'success' | 'error' = 'info') => {
-    const timestamp = new Date().toLocaleTimeString();
-    const emoji = type === 'success' ? '✅' : type === 'error' ? '❌' : '📝';
-    setLogs(prev => [...prev, `${timestamp}: ${emoji} ${message}`]);
-  }, []);
+  const addLog = useCallback(
+    (message: string, type: 'info' | 'success' | 'error' = 'info') => {
+      const timestamp = new Date().toLocaleTimeString();
+      const emoji = type === 'success' ? '✅' : type === 'error' ? '❌' : '📝';
+      setLogs(prev => [...prev, `${timestamp}: ${emoji} ${message}`]);
+    },
+    []
+  );
 
-  const addToHistory = useCallback((
-    method: string,
-    url: string,
-    status: 'success' | 'error',
-    response?: unknown,
-    error?: string
-  ) => {
-    setRequestHistory(prev => [...prev, {
-      id: Date.now(),
-      method,
-      url: `${config.baseUrl}${config.endpoint}`,
-      timestamp: new Date().toLocaleString(),
-      status,
-      response,
-      error,
-    }]);
-  }, [config.baseUrl, config.endpoint]);
+  const addToHistory = useCallback(
+    (
+      method: string,
+      url: string,
+      status: 'success' | 'error',
+      response?: unknown,
+      error?: string
+    ) => {
+      setRequestHistory(prev => [
+        ...prev,
+        {
+          id: Date.now(),
+          method,
+          url: `${config.baseUrl}${config.endpoint}`,
+          timestamp: new Date().toLocaleString(),
+          status,
+          response,
+          error,
+        },
+      ]);
+    },
+    [config.baseUrl, config.endpoint]
+  );
 
   const executeRequest = useCallback(async () => {
     const fullUrl = `${config.baseUrl}${config.endpoint}`;
@@ -117,9 +132,21 @@ const ApiExplorer = () => {
           addLog(`❌ Unsupported method: ${config.method}`, 'error');
       }
     } catch (err) {
-      addLog(`❌ Request failed: ${err instanceof Error ? err.message : 'Unknown error'}`, 'error');
+      addLog(
+        `❌ Request failed: ${err instanceof Error ? err.message : 'Unknown error'}`,
+        'error'
+      );
     }
-  }, [config, fetchData, postData, putData, deleteData, patchData, addLog, addToHistory]);
+  }, [
+    config,
+    fetchData,
+    postData,
+    putData,
+    deleteData,
+    patchData,
+    addLog,
+    addToHistory,
+  ]);
 
   const clearLogs = () => setLogs([]);
   const clearHistory = () => setRequestHistory([]);
@@ -140,7 +167,9 @@ const ApiExplorer = () => {
       <div style={storyStyles.gradientHeader}>
         <h1 style={storyStyles.gradientHeaderTitle}>🔍 API Explorer</h1>
         <p style={storyStyles.gradientHeaderSubtitle}>
-          Interactive API testing interface that lets you explore different endpoints, methods, and configurations of the useFetchWithCallbacks hook in real-time.
+          Interactive API testing interface that lets you explore different
+          endpoints, methods, and configurations of the useFetchWithCallbacks
+          hook in real-time.
         </p>
       </div>
 
@@ -150,22 +179,22 @@ const ApiExplorer = () => {
 
         {/* Quick Presets */}
         <div style={storyStyles.formGroup}>
-          <label style={storyStyles.label}>
-            🎯 Quick Presets:
-          </label>
+          <label style={storyStyles.label}>🎯 Quick Presets:</label>
           <select
             value={selectedPreset}
-            onChange={(e) => {
+            onChange={e => {
               const presetValue = e.target.value;
               setSelectedPreset(presetValue);
 
               if (presetValue) {
-                const selectedPresetData = presetEndpoints.find(p => `${p.method}:${p.endpoint}` === presetValue);
+                const selectedPresetData = presetEndpoints.find(
+                  p => `${p.method}:${p.endpoint}` === presetValue
+                );
                 if (selectedPresetData) {
                   setConfig(prev => ({
                     ...prev,
                     method: selectedPresetData.method,
-                    endpoint: selectedPresetData.endpoint
+                    endpoint: selectedPresetData.endpoint,
                   }));
                 }
               }
@@ -182,12 +211,12 @@ const ApiExplorer = () => {
         </div>
 
         <div style={storyStyles.formGroup}>
-          <label style={storyStyles.label}>
-            HTTP Method:
-          </label>
+          <label style={storyStyles.label}>HTTP Method:</label>
           <select
             value={config.method}
-            onChange={(e) => setConfig(prev => ({ ...prev, method: e.target.value }))}
+            onChange={e =>
+              setConfig(prev => ({ ...prev, method: e.target.value }))
+            }
             style={storyStyles.select}
           >
             <option value="GET">GET</option>
@@ -199,48 +228,51 @@ const ApiExplorer = () => {
         </div>
 
         <div style={storyStyles.formGroup}>
-          <label style={storyStyles.label}>
-            Base URL:
-          </label>
+          <label style={storyStyles.label}>Base URL:</label>
           <input
             type="text"
             value={config.baseUrl}
-            onChange={(e) => setConfig(prev => ({ ...prev, baseUrl: e.target.value }))}
+            onChange={e =>
+              setConfig(prev => ({ ...prev, baseUrl: e.target.value }))
+            }
             style={storyStyles.input}
           />
         </div>
 
         <div style={storyStyles.formGroup}>
-          <label style={storyStyles.label}>
-            Endpoint:
-          </label>
+          <label style={storyStyles.label}>Endpoint:</label>
           <input
             type="text"
             value={config.endpoint}
-            onChange={(e) => setConfig(prev => ({ ...prev, endpoint: e.target.value }))}
+            onChange={e =>
+              setConfig(prev => ({ ...prev, endpoint: e.target.value }))
+            }
             style={storyStyles.input}
           />
         </div>
 
         <div style={storyStyles.formGroup}>
-          <label style={storyStyles.label}>
-            Timeout (ms):
-          </label>
+          <label style={storyStyles.label}>Timeout (ms):</label>
           <input
             type="number"
             value={config.timeout}
-            onChange={(e) => setConfig(prev => ({ ...prev, timeout: parseInt(e.target.value) }))}
+            onChange={e =>
+              setConfig(prev => ({
+                ...prev,
+                timeout: parseInt(e.target.value),
+              }))
+            }
             style={storyStyles.input}
           />
         </div>
 
         <div style={storyStyles.formGroup}>
-          <label style={storyStyles.label}>
-            Headers (JSON):
-          </label>
+          <label style={storyStyles.label}>Headers (JSON):</label>
           <textarea
             value={config.headers}
-            onChange={(e) => setConfig(prev => ({ ...prev, headers: e.target.value }))}
+            onChange={e =>
+              setConfig(prev => ({ ...prev, headers: e.target.value }))
+            }
             rows={3}
             style={storyStyles.textarea}
           />
@@ -248,12 +280,12 @@ const ApiExplorer = () => {
 
         {['POST', 'PUT', 'PATCH'].includes(config.method) && (
           <div style={storyStyles.formGroup}>
-            <label style={storyStyles.label}>
-              Request Body (JSON):
-            </label>
+            <label style={storyStyles.label}>Request Body (JSON):</label>
             <textarea
               value={config.body}
-              onChange={(e) => setConfig(prev => ({ ...prev, body: e.target.value }))}
+              onChange={e =>
+                setConfig(prev => ({ ...prev, body: e.target.value }))
+              }
               rows={4}
               style={storyStyles.textarea}
             />
@@ -289,10 +321,7 @@ const ApiExplorer = () => {
       <div style={storyStyles.card}>
         <div style={storyStyles.flexBetween}>
           <h3 style={storyStyles.cardHeader}>📋 Request Logs</h3>
-          <button
-            onClick={clearLogs}
-            style={getButtonStyle('secondary')}
-          >
+          <button onClick={clearLogs} style={getButtonStyle('secondary')}>
             Clear
           </button>
         </div>
@@ -313,10 +342,7 @@ const ApiExplorer = () => {
       <div style={storyStyles.card}>
         <div style={storyStyles.flexBetween}>
           <h3 style={storyStyles.cardHeader}>📚 Request History</h3>
-          <button
-            onClick={clearHistory}
-            style={getButtonStyle('danger')}
-          >
+          <button onClick={clearHistory} style={getButtonStyle('danger')}>
             Clear History
           </button>
         </div>
@@ -324,12 +350,14 @@ const ApiExplorer = () => {
           {requestHistory.length === 0 ? (
             <em>No requests yet...</em>
           ) : (
-            requestHistory.map((request) => (
+            requestHistory.map(request => (
               <div
                 key={request.id}
                 style={combineStyles(
                   storyStyles.listItem,
-                  request.status === 'success' ? storyStyles.listItemSuccess : storyStyles.listItemError
+                  request.status === 'success'
+                    ? storyStyles.listItemSuccess
+                    : storyStyles.listItemError
                 )}
               >
                 <div style={storyStyles.textBold}>
@@ -338,8 +366,14 @@ const ApiExplorer = () => {
                     {request.timestamp}
                   </span>
                 </div>
-                <div style={combineStyles({ marginTop: '8px' }, storyStyles.textMuted)}>
-                  Status: {request.status === 'success' ? '✅ Success' : '❌ Error'}
+                <div
+                  style={combineStyles(
+                    { marginTop: '8px' },
+                    storyStyles.textMuted
+                  )}
+                >
+                  Status:{' '}
+                  {request.status === 'success' ? '✅ Success' : '❌ Error'}
                   {request.error && ` - ${request.error}`}
                 </div>
               </div>

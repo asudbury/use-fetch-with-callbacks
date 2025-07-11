@@ -26,6 +26,7 @@ Explore live examples and comprehensive documentation in our **Storybook**:
 [**🚀 View Live Examples →**](https://asudbury.github.io/use-fetch-with-callbacks)
 
 Or run locally:
+
 ```bash
 git clone https://github.com/asudbury/use-fetch-with-callbacks.git
 cd use-fetch-with-callbacks
@@ -41,7 +42,7 @@ npm run storybook
 ## 🔧 Basic Usage
 
 ```tsx
-import useFetchWithCallbacks from "use-fetch-with-callbacks";
+import useFetchWithCallbacks from 'use-fetch-with-callbacks';
 
 interface User {
   id: number;
@@ -50,32 +51,33 @@ interface User {
 }
 
 const UserProfile = () => {
-  const { response, loading, error, fetchData, postData, deleteData } = useFetchWithCallbacks<User>("/users/1", {
-    baseUrl: "https://api.example.com",
-    headers: { Authorization: "Bearer your-token" },
-    timeout: 5000 // 5 second timeout
-  });
+  const { response, loading, error, fetchData, postData, deleteData } =
+    useFetchWithCallbacks<User>('/users/1', {
+      baseUrl: 'https://api.example.com',
+      headers: { Authorization: 'Bearer your-token' },
+      timeout: 5000, // 5 second timeout
+    });
 
   const handleFetch = () => {
     fetchData(
-      (data) => console.log("User loaded:", data),
-      (error) => console.error("Failed to load user:", error),
-      (loading) => console.log("Loading state:", loading)
+      data => console.log('User loaded:', data),
+      error => console.error('Failed to load user:', error),
+      loading => console.log('Loading state:', loading)
     );
   };
 
   const handleUpdate = () => {
     postData(
-      { name: "John Doe", email: "john@example.com" },
-      (data) => console.log("User updated:", data),
-      (error) => console.error("Update failed:", error)
+      { name: 'John Doe', email: 'john@example.com' },
+      data => console.log('User updated:', data),
+      error => console.error('Update failed:', error)
     );
   };
 
   const handleDelete = () => {
     deleteData(
-      (data) => console.log("User deleted:", data),
-      (error) => console.error("Delete failed:", error)
+      data => console.log('User deleted:', data),
+      error => console.error('Delete failed:', error)
     );
   };
 
@@ -98,37 +100,43 @@ Execute multiple HTTP requests sequentially:
 
 ```tsx
 const UserWorkflow = () => {
-  const { chain } = useFetchWithCallbacks<User>("/users/1", {
-    baseUrl: "https://api.example.com"
+  const { chain } = useFetchWithCallbacks<User>('/users/1', {
+    baseUrl: 'https://api.example.com',
   });
 
   const handleWorkflow = async () => {
     // Execute a complex workflow
     await chain()
-      .fetch((user) => {
-        console.log("1. Fetched user:", user);
+      .fetch(user => {
+        console.log('1. Fetched user:', user);
       })
-      .patch({ 
-        lastLogin: new Date() 
-      }, (updated) => {
-        console.log("2. Updated login time:", updated);
+      .patch(
+        {
+          lastLogin: new Date(),
+        },
+        updated => {
+          console.log('2. Updated login time:', updated);
+        }
+      )
+      .put(
+        {
+          status: 'active',
+        },
+        activated => {
+          console.log('3. Activated user:', activated);
+        }
+      )
+      .delete(deleted => {
+        console.log('4. Cleaned up:', deleted);
       })
-      .put({ 
-        status: "active" 
-      }, (activated) => {
-        console.log("3. Activated user:", activated);
+      .then(finalResult => {
+        console.log('✅ Workflow completed:', finalResult);
       })
-      .delete((deleted) => {
-        console.log("4. Cleaned up:", deleted);
-      })
-      .then((finalResult) => {
-        console.log("✅ Workflow completed:", finalResult);
-      })
-      .catch((error) => {
-        console.error("❌ Workflow failed:", error);
+      .catch(error => {
+        console.error('❌ Workflow failed:', error);
       })
       .finally(() => {
-        console.log("🔄 Workflow finished");
+        console.log('🔄 Workflow finished');
       })
       .execute();
   };
@@ -143,18 +151,18 @@ Fetch from multiple endpoints simultaneously:
 
 ```tsx
 const Dashboard = () => {
-  const { fetchMultipleData } = useFetchWithCallbacks<any>("/", {
-    baseUrl: "https://api.example.com"
+  const { fetchMultipleData } = useFetchWithCallbacks<any>('/', {
+    baseUrl: 'https://api.example.com',
   });
 
   const loadDashboard = () => {
     fetchMultipleData(
-      ["/users", "/posts", "/comments"],
-      (results) => {
-        console.log("All data loaded:", results);
+      ['/users', '/posts', '/comments'],
+      results => {
+        console.log('All data loaded:', results);
         // results[0] = users, results[1] = posts, results[2] = comments
       },
-      (error) => console.error("Failed to load dashboard:", error)
+      error => console.error('Failed to load dashboard:', error)
     );
   };
 
@@ -165,14 +173,14 @@ const Dashboard = () => {
 ## 🎛️ Advanced Configuration
 
 ```tsx
-const api = useFetchWithCallbacks<ApiResponse>("/data", {
-  baseUrl: "https://api.example.com",
+const api = useFetchWithCallbacks<ApiResponse>('/data', {
+  baseUrl: 'https://api.example.com',
   headers: {
-    "Authorization": "Bearer token",
-    "Content-Type": "application/json",
-    "X-Custom-Header": "value"
+    Authorization: 'Bearer token',
+    'Content-Type': 'application/json',
+    'X-Custom-Header': 'value',
   },
-  timeout: 10000 // 10 second timeout
+  timeout: 10000, // 10 second timeout
 });
 ```
 
@@ -181,6 +189,7 @@ const api = useFetchWithCallbacks<ApiResponse>("/data", {
 ### `useFetchWithCallbacks<T>(endpoint, options?)`
 
 **Parameters:**
+
 - `endpoint` (string): The API endpoint path
 - `options` (UseFetchOptions): Optional configuration
 
@@ -208,9 +217,9 @@ interface FetchResult<T> {
 
 ```typescript
 interface UseFetchOptions {
-  baseUrl?: string;      // Base URL for all requests
+  baseUrl?: string; // Base URL for all requests
   headers?: HeadersInit; // Default headers
-  timeout?: number;      // Request timeout (default: 10000ms)
+  timeout?: number; // Request timeout (default: 10000ms)
 }
 ```
 
@@ -219,7 +228,7 @@ interface UseFetchOptions {
 ```typescript
 interface ChainableRequest<T> {
   fetch: (...) => ChainableRequest<T>;    // Add GET request to chain
-  post: (...) => ChainableRequest<T>;     // Add POST request to chain  
+  post: (...) => ChainableRequest<T>;     // Add POST request to chain
   put: (...) => ChainableRequest<T>;      // Add PUT request to chain
   delete: (...) => ChainableRequest<T>;   // Add DELETE request to chain
   patch: (...) => ChainableRequest<T>;    // Add PATCH request to chain
@@ -235,21 +244,21 @@ interface ChainableRequest<T> {
 The hook provides comprehensive error handling:
 
 ```tsx
-const { fetchData } = useFetchWithCallbacks<User>("/users/1");
+const { fetchData } = useFetchWithCallbacks<User>('/users/1');
 
 fetchData(
-  (data) => {
+  data => {
     // Success callback
-    console.log("Success:", data);
+    console.log('Success:', data);
   },
-  (error) => {
+  error => {
     // Error callback - handles network errors, timeouts, HTTP errors
-    if (error.message === "Request timeout") {
-      console.log("Request timed out");
-    } else if (error.message.includes("404")) {
-      console.log("User not found");
+    if (error.message === 'Request timeout') {
+      console.log('Request timed out');
+    } else if (error.message.includes('404')) {
+      console.log('User not found');
     } else {
-      console.log("Other error:", error.message);
+      console.log('Other error:', error.message);
     }
   }
 );
@@ -258,17 +267,18 @@ fetchData(
 ## 🔄 Request Cancellation
 
 Requests are automatically cancelled when:
+
 - Component unmounts
 - New request is initiated
 - Timeout is reached
 
 ```tsx
-const { fetchData } = useFetchWithCallbacks<User>("/users/1");
+const { fetchData } = useFetchWithCallbacks<User>('/users/1');
 
 // This request will be cancelled if component unmounts
 fetchData(
-  (data) => console.log("Success:", data),
-  (error) => console.log("Error:", error)
+  data => console.log('Success:', data),
+  error => console.log('Error:', error)
 );
 ```
 
@@ -284,7 +294,7 @@ interface User {
 }
 
 // T is automatically inferred as User
-const { response, fetchData } = useFetchWithCallbacks<User>("/users/1");
+const { response, fetchData } = useFetchWithCallbacks<User>('/users/1');
 
 // response is typed as User | null
 // fetchData callbacks receive properly typed data

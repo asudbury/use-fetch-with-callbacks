@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - DELETE and PATCH HTTP methods
 - Enhanced error handling with better error messages
 - Request chaining with DELETE and PATCH support
@@ -15,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-07-05
 
 ### Added
+
 - Initial release
 - GET, POST, PUT HTTP methods with callback support
 - Request chaining functionality
@@ -28,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Loading state management
 
 ### Features
+
 - ✅ HTTP Methods: GET, POST, PUT, DELETE, PATCH
 - ✅ Request Chaining: Sequential operations with fluent API
 - ✅ Multiple Requests: Concurrent requests to different endpoints

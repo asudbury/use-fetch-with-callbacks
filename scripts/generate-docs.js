@@ -9,11 +9,12 @@ const source = fs.readFileSync(sourceFile, 'utf8');
 function extractDocumentation(source) {
   const docs = {
     interfaces: [],
-    hook: null
+    hook: null,
   };
 
   // Extract interfaces with their JSDoc comments and properties
-  const interfaceRegex = /\/\*\*([\s\S]*?)\*\/\s*export interface (\w+)(<[^>]+>)?\s*\{([\s\S]*?)(?=\n\})/g;
+  const interfaceRegex =
+    /\/\*\*([\s\S]*?)\*\/\s*export interface (\w+)(<[^>]+>)?\s*\{([\s\S]*?)(?=\n\})/g;
   let match;
 
   while ((match = interfaceRegex.exec(source)) !== null) {
@@ -66,7 +67,11 @@ function extractDocumentation(source) {
       }
 
       // If this is a property or method definition
-      if (line.includes(':') && !line.startsWith('//') && !line.startsWith('*')) {
+      if (
+        line.includes(':') &&
+        !line.startsWith('//') &&
+        !line.startsWith('*')
+      ) {
         const propMatch = line.match(/(\w+)(\?)?\s*:\s*([^;,]+)/);
         if (propMatch) {
           const [, propName, optional, propType] = propMatch;
@@ -75,7 +80,7 @@ function extractDocumentation(source) {
             name: propName,
             type: propType.trim().replace(/,$/, ''),
             optional: !!optional,
-            description: currentComment || `Property ${propName}`
+            description: currentComment || `Property ${propName}`,
           });
 
           currentComment = ''; // Reset comment
@@ -86,12 +91,13 @@ function extractDocumentation(source) {
     docs.interfaces.push({
       name: name + (genericParams || ''),
       description: cleanComment,
-      properties
+      properties,
     });
   }
 
   // Extract the main hook documentation
-  const hookRegex = /\/\*\*([\s\S]*?)\*\/\s*export\s+const\s+useFetchWithCallbacks/;
+  const hookRegex =
+    /\/\*\*([\s\S]*?)\*\/\s*export\s+const\s+useFetchWithCallbacks/;
   const hookMatch = source.match(hookRegex);
 
   if (hookMatch) {
@@ -103,7 +109,7 @@ function extractDocumentation(source) {
 
     docs.hook = {
       name: 'useFetchWithCallbacks',
-      description: cleanComment
+      description: cleanComment,
     };
   }
 
@@ -128,11 +134,7 @@ fs.writeFileSync(
 
 // Also create a markdown version
 const markdownContent = generateMarkdown(documentation);
-fs.writeFileSync(
-  path.join(docsDir, 'api.md'),
-  markdownContent,
-  'utf8'
-);
+fs.writeFileSync(path.join(docsDir, 'api.md'), markdownContent, 'utf8');
 
 function generateMarkdown(docs) {
   let markdown = '# API Documentation\n\n';
@@ -166,5 +168,7 @@ function generateMarkdown(docs) {
 }
 
 console.log('Documentation generated successfully!');
-console.log(`- docs/api.json: ${documentation.interfaces.length} interfaces documented`);
+console.log(
+  `- docs/api.json: ${documentation.interfaces.length} interfaces documented`
+);
 console.log(`- docs/api.md: Markdown documentation created`);

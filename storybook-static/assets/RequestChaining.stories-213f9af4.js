@@ -1,5 +1,228 @@
-import{j as e,s as n,g as o}from"./storyStyles-370e2c63.js";import{r as u}from"./index-8b3efc3f.js";import{u as f}from"./useFetchWithCallbacks-0999b78a.js";import"./_commonjsHelpers-de833af9.js";const S=({baseUrl:d="https://jsonplaceholder.typicode.com"})=>{const{chain:h}=f("/users/1",{baseUrl:d,timeout:5e3}),[p,m]=u.useState([]),[a,i]=u.useState(!1),t=s=>{m(r=>[...r,`${new Date().toLocaleTimeString()}: ${s}`])},c=()=>m([]),j=async()=>{i(!0),c(),await h().fetch(s=>{t(`✅ Step 1: Fetched user ${s.name}`)}).post({name:"Updated Name",email:"updated@example.com",id:1},s=>{t(`✅ Step 2: Posted update for ${s.name}`)}).put({name:"Final Name",email:"final@example.com",id:1},s=>{t(`✅ Step 3: Put final update for ${s.name}`)}).then(()=>{t("🎉 Chain completed successfully with final result!")}).catch(s=>{t(`❌ Chain failed: ${s.message}`)}).finally(()=>{t("🔄 Chain execution finished"),i(!1)}).execute()},C=async()=>{i(!0),c(),await h().fetch(s=>{t(`✅ Step 1: Fetched user ${s.name}`)}).patch({email:"patched@example.com"},s=>{t(`✅ Step 2: Patched email to ${s.email}`)}).put({name:"Chain User",email:"chain@example.com",id:1},s=>{t(`✅ Step 3: Full update to ${s.name}`)}).delete(()=>{t("✅ Step 4: Cleanup completed")}).then(()=>{t("🎉 Complex chain completed!")}).catch(s=>{t(`❌ Complex chain failed: ${s.message}`)}).finally(()=>{t("🔄 Complex chain execution finished"),i(!1)}).execute()};return e.jsxs("div",{style:n.container,children:[e.jsx("h2",{style:n.pageTitle,children:"🔗 Request Chaining Example"}),e.jsx("p",{style:n.pageDescription,children:"This demonstrates sequential HTTP operations using the chain API."}),e.jsxs("p",{style:n.pageDescription,children:["Base URL: ",e.jsx("code",{children:d})]}),e.jsxs("div",{style:n.card,children:[e.jsx("h3",{style:n.cardHeader,children:"🚀 Chain Operations"}),e.jsxs("div",{style:n.flexCenter,children:[e.jsx("button",{onClick:j,disabled:a,style:o("success",a),children:a?"Running...":"Run Simple Chain (GET → POST → PUT)"}),e.jsx("button",{onClick:C,disabled:a,style:o("primary",a),children:a?"Running...":"Run Complex Chain (GET → PATCH → PUT → DELETE)"}),e.jsx("button",{onClick:c,disabled:a,style:o("secondary",a),children:"Clear Logs"})]})]}),e.jsxs("div",{style:n.card,children:[e.jsx("h3",{style:n.cardHeader,children:"📋 Chain Execution Logs"}),e.jsx("div",{style:n.logsContainer,children:p.length===0?e.jsx("em",{children:"No logs yet. Click one of the chain buttons to start."}):p.map((s,r)=>e.jsx("div",{style:n.mb16,children:s},r))})]}),e.jsxs("div",{style:n.card,children:[e.jsx("h3",{style:n.cardHeader,children:"💡 How Chain Works"}),e.jsxs("ul",{style:{paddingLeft:"20px",margin:0},children:[e.jsxs("li",{children:[e.jsx("strong",{children:"Sequential Execution:"})," Each operation waits for the previous to complete"]}),e.jsxs("li",{children:[e.jsx("strong",{children:"Error Handling:"})," If any step fails, the chain stops and calls .catch()"]}),e.jsxs("li",{children:[e.jsx("strong",{children:"Final Callbacks:"})," .then() runs only if all steps succeed"]}),e.jsxs("li",{children:[e.jsx("strong",{children:"Cleanup:"})," .finally() always runs regardless of success/failure"]}),e.jsxs("li",{children:[e.jsx("strong",{children:"Individual Callbacks:"})," Each method can have its own success/error/loading callbacks"]})]})]})]})},v={title:"Request Chaining",component:S,parameters:{layout:"fullscreen",docs:{description:{story:"Advanced request chaining example showing sequential HTTP operations with comprehensive error handling."}}},argTypes:{baseUrl:{control:"text",description:"Base URL for the API"}}},l={args:{baseUrl:"https://jsonplaceholder.typicode.com"}};var x,g,y;l.parameters={...l.parameters,docs:{...(x=l.parameters)==null?void 0:x.docs,source:{originalSource:`{
+import { j as e, s as n, g as o } from './storyStyles-370e2c63.js';
+import { r as u } from './index-8b3efc3f.js';
+import { u as f } from './useFetchWithCallbacks-0999b78a.js';
+import './_commonjsHelpers-de833af9.js';
+const S = ({ baseUrl: d = 'https://jsonplaceholder.typicode.com' }) => {
+    const { chain: h } = f('/users/1', { baseUrl: d, timeout: 5e3 }),
+      [p, m] = u.useState([]),
+      [a, i] = u.useState(!1),
+      t = s => {
+        m(r => [...r, `${new Date().toLocaleTimeString()}: ${s}`]);
+      },
+      c = () => m([]),
+      j = async () => {
+        (i(!0),
+          c(),
+          await h()
+            .fetch(s => {
+              t(`✅ Step 1: Fetched user ${s.name}`);
+            })
+            .post(
+              { name: 'Updated Name', email: 'updated@example.com', id: 1 },
+              s => {
+                t(`✅ Step 2: Posted update for ${s.name}`);
+              }
+            )
+            .put(
+              { name: 'Final Name', email: 'final@example.com', id: 1 },
+              s => {
+                t(`✅ Step 3: Put final update for ${s.name}`);
+              }
+            )
+            .then(() => {
+              t('🎉 Chain completed successfully with final result!');
+            })
+            .catch(s => {
+              t(`❌ Chain failed: ${s.message}`);
+            })
+            .finally(() => {
+              (t('🔄 Chain execution finished'), i(!1));
+            })
+            .execute());
+      },
+      C = async () => {
+        (i(!0),
+          c(),
+          await h()
+            .fetch(s => {
+              t(`✅ Step 1: Fetched user ${s.name}`);
+            })
+            .patch({ email: 'patched@example.com' }, s => {
+              t(`✅ Step 2: Patched email to ${s.email}`);
+            })
+            .put(
+              { name: 'Chain User', email: 'chain@example.com', id: 1 },
+              s => {
+                t(`✅ Step 3: Full update to ${s.name}`);
+              }
+            )
+            .delete(() => {
+              t('✅ Step 4: Cleanup completed');
+            })
+            .then(() => {
+              t('🎉 Complex chain completed!');
+            })
+            .catch(s => {
+              t(`❌ Complex chain failed: ${s.message}`);
+            })
+            .finally(() => {
+              (t('🔄 Complex chain execution finished'), i(!1));
+            })
+            .execute());
+      };
+    return e.jsxs('div', {
+      style: n.container,
+      children: [
+        e.jsx('h2', {
+          style: n.pageTitle,
+          children: '🔗 Request Chaining Example',
+        }),
+        e.jsx('p', {
+          style: n.pageDescription,
+          children:
+            'This demonstrates sequential HTTP operations using the chain API.',
+        }),
+        e.jsxs('p', {
+          style: n.pageDescription,
+          children: ['Base URL: ', e.jsx('code', { children: d })],
+        }),
+        e.jsxs('div', {
+          style: n.card,
+          children: [
+            e.jsx('h3', {
+              style: n.cardHeader,
+              children: '🚀 Chain Operations',
+            }),
+            e.jsxs('div', {
+              style: n.flexCenter,
+              children: [
+                e.jsx('button', {
+                  onClick: j,
+                  disabled: a,
+                  style: o('success', a),
+                  children: a
+                    ? 'Running...'
+                    : 'Run Simple Chain (GET → POST → PUT)',
+                }),
+                e.jsx('button', {
+                  onClick: C,
+                  disabled: a,
+                  style: o('primary', a),
+                  children: a
+                    ? 'Running...'
+                    : 'Run Complex Chain (GET → PATCH → PUT → DELETE)',
+                }),
+                e.jsx('button', {
+                  onClick: c,
+                  disabled: a,
+                  style: o('secondary', a),
+                  children: 'Clear Logs',
+                }),
+              ],
+            }),
+          ],
+        }),
+        e.jsxs('div', {
+          style: n.card,
+          children: [
+            e.jsx('h3', {
+              style: n.cardHeader,
+              children: '📋 Chain Execution Logs',
+            }),
+            e.jsx('div', {
+              style: n.logsContainer,
+              children:
+                p.length === 0
+                  ? e.jsx('em', {
+                      children:
+                        'No logs yet. Click one of the chain buttons to start.',
+                    })
+                  : p.map((s, r) =>
+                      e.jsx('div', { style: n.mb16, children: s }, r)
+                    ),
+            }),
+          ],
+        }),
+        e.jsxs('div', {
+          style: n.card,
+          children: [
+            e.jsx('h3', {
+              style: n.cardHeader,
+              children: '💡 How Chain Works',
+            }),
+            e.jsxs('ul', {
+              style: { paddingLeft: '20px', margin: 0 },
+              children: [
+                e.jsxs('li', {
+                  children: [
+                    e.jsx('strong', { children: 'Sequential Execution:' }),
+                    ' Each operation waits for the previous to complete',
+                  ],
+                }),
+                e.jsxs('li', {
+                  children: [
+                    e.jsx('strong', { children: 'Error Handling:' }),
+                    ' If any step fails, the chain stops and calls .catch()',
+                  ],
+                }),
+                e.jsxs('li', {
+                  children: [
+                    e.jsx('strong', { children: 'Final Callbacks:' }),
+                    ' .then() runs only if all steps succeed',
+                  ],
+                }),
+                e.jsxs('li', {
+                  children: [
+                    e.jsx('strong', { children: 'Cleanup:' }),
+                    ' .finally() always runs regardless of success/failure',
+                  ],
+                }),
+                e.jsxs('li', {
+                  children: [
+                    e.jsx('strong', { children: 'Individual Callbacks:' }),
+                    ' Each method can have its own success/error/loading callbacks',
+                  ],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+  },
+  v = {
+    title: 'Request Chaining',
+    component: S,
+    parameters: {
+      layout: 'fullscreen',
+      docs: {
+        description: {
+          story:
+            'Advanced request chaining example showing sequential HTTP operations with comprehensive error handling.',
+        },
+      },
+    },
+    argTypes: {
+      baseUrl: { control: 'text', description: 'Base URL for the API' },
+    },
+  },
+  l = { args: { baseUrl: 'https://jsonplaceholder.typicode.com' } };
+var x, g, y;
+l.parameters = {
+  ...l.parameters,
+  docs: {
+    ...((x = l.parameters) == null ? void 0 : x.docs),
+    source: {
+      originalSource: `{
   args: {
     baseUrl: 'https://jsonplaceholder.typicode.com'
   }
-}`,...(y=(g=l.parameters)==null?void 0:g.docs)==null?void 0:y.source}}};const P=["RequestChaining"];export{l as RequestChaining,P as __namedExportsOrder,v as default};
+}`,
+      ...((y = (g = l.parameters) == null ? void 0 : g.docs) == null
+        ? void 0
+        : y.source),
+    },
+  },
+};
+const P = ['RequestChaining'];
+export { l as RequestChaining, P as __namedExportsOrder, v as default };

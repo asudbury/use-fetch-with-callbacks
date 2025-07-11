@@ -4,7 +4,8 @@ export const storyStyles = {
   // Main container - standardized padding and margins
   container: {
     padding: '24px', // Consistent padding on all sides
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    fontFamily:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     lineHeight: '1.6',
     color: '#333',
     maxWidth: '1200px',
@@ -288,7 +289,10 @@ export const combineStyles = (...styles: Record<string, unknown>[]) => {
   return Object.assign({}, ...styles);
 };
 
-export const getButtonStyle = (variant: 'primary' | 'secondary' | 'danger' | 'success', disabled: boolean = false) => {
+export const getButtonStyle = (
+  variant: 'primary' | 'secondary' | 'danger' | 'success',
+  disabled: boolean = false
+) => {
   const baseStyle = storyStyles.button;
   let variantStyle;
 

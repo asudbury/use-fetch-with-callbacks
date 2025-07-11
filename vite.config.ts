@@ -7,7 +7,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       name: 'UseFetchWithCallbacks',
-      fileName: (format) => `use-fetch-with-callbacks.${format}.js`,
+      fileName: format => `use-fetch-with-callbacks.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

@@ -10,7 +10,7 @@ Result object returned by the useFetchWithCallbacks hook
 #### Properties
 
 - **fetchData**: `(`
-  The response data from the API call, null if no data has been fetched yet */ Whether a request is currently in progress */ Any error that occurred during the request, null if no error */ Whether at least one request has been completed (successfully or with error) */ Performs a GET request to the specified endpoint @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes
+  The response data from the API call, null if no data has been fetched yet _/ Whether a request is currently in progress _/ Any error that occurred during the request, null if no error _/ Whether at least one request has been completed (successfully or with error) _/ Performs a GET request to the specified endpoint @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes
 
 - **onSuccess?**: `(data: T) => void`
   Property onSuccess
@@ -187,4 +187,3 @@ Chainable request interface for sequential operations
 ### UseFetchOptions
 
 Configuration options for the useFetchWithCallbacks hook
-

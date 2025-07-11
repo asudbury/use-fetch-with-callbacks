@@ -95,7 +95,8 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
       <div style={storyStyles.gradientHeader}>
         <h1 style={storyStyles.gradientHeaderTitle}>🔗 Request Chaining</h1>
         <p style={storyStyles.gradientHeaderSubtitle}>
-          Advanced sequential HTTP operations using the powerful chain API for complex data workflows and multi-step operations.
+          Advanced sequential HTTP operations using the powerful chain API for
+          complex data workflows and multi-step operations.
         </p>
       </div>
 

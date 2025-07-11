@@ -49,6 +49,7 @@ Stories are organized in the following structure:
 ## 🎨 Theming
 
 The Storybook site uses a custom theme defined in `manager.ts` with:
+
 - Custom brand colors
 - Typography settings
 - Layout configuration

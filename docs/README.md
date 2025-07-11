@@ -16,6 +16,7 @@ npm run docs:build
 ```
 
 This will:
+
 1. Parse the TypeScript source file (`src/useFetchWithCallbacks.ts`)
 2. Extract JSDoc comments and interface definitions
 3. Generate both JSON and Markdown documentation

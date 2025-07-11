@@ -23,14 +23,15 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: prop =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
       compilerOptions: {
         allowSyntheticDefaultImports: true,
         esModuleInterop: true,
       },
     },
   },
-  viteFinal: async (config) => {
+  viteFinal: async config => {
     // Optimize for GitHub Pages deployment
     if (process.env.NODE_ENV === 'production') {
       config.base = '/use-fetch-with-callbacks/'; // Replace with your repo name
