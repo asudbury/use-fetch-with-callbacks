@@ -1,0 +1,16 @@
+{
+  "source": {
+    "include": ["./src/"],
+    "includePattern": "\\.(js|ts|tsx)$",
+    "exclude": ["node_modules/", "dist/", "src/**/*.test.ts", "src/**/*.stories.tsx", "src/test/"]
+  },
+  "opts": {
+    "destination": "./docs/",
+    "recurse": true
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  }
+}

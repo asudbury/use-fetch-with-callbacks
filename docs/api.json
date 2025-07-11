@@ -1,0 +1,358 @@
+{
+  "interfaces": [
+    {
+      "name": "FetchResult<T>",
+      "description": "Result object returned by the useFetchWithCallbacks hook\n@template T - The type of data expected from the API response",
+      "properties": [
+        {
+          "name": "fetchData",
+          "type": "(",
+          "optional": false,
+          "description": "The response data from the API call, null if no data has been fetched yet */ Whether a request is currently in progress */ Any error that occurred during the request, null if no error */ Whether at least one request has been completed (successfully or with error) */ Performs a GET request to the specified endpoint @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "postData",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a POST request to the specified endpoint @param data - The data to send in the request body @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes"
+        },
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": false,
+          "description": "Property data"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "putData",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a PUT request to the specified endpoint @param data - The data to send in the request body @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes"
+        },
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": false,
+          "description": "Property data"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "deleteData",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a DELETE request to the specified endpoint @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "patchData",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a PATCH request to the specified endpoint @param data - The data to send in the request body @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when the request completes"
+        },
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": false,
+          "description": "Property data"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "fetchMultipleData",
+          "type": "(",
+          "optional": false,
+          "description": "Performs multiple GET requests to different endpoints concurrently @param endpoints - Array of endpoint paths to fetch from @param onSuccess - Optional callback executed when all requests succeed @param onError - Optional callback executed when any request fails @param onLoading - Optional callback executed when loading state changes @returns Promise that resolves when all requests complete"
+        },
+        {
+          "name": "endpoints",
+          "type": "string[]",
+          "optional": false,
+          "description": "Property endpoints"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: unknown[]) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "chain",
+          "type": "() => ChainableRequest<T>",
+          "optional": false,
+          "description": "Provides a chainable interface for sequential operations @returns A chainable object with then, catch, and finally methods"
+        }
+      ]
+    },
+    {
+      "name": "ChainableRequest<T>",
+      "description": "Chainable request interface for sequential operations\n@template T - The type of data expected from the API response",
+      "properties": [
+        {
+          "name": "fetch",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a GET request and returns a chainable object @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns A chainable object for further operations"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "post",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a POST request and returns a chainable object @param data - The data to send in the request body @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns A chainable object for further operations"
+        },
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": false,
+          "description": "Property data"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "put",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a PUT request and returns a chainable object @param data - The data to send in the request body @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns A chainable object for further operations"
+        },
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": false,
+          "description": "Property data"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "delete",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a DELETE request and returns a chainable object @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns A chainable object for further operations"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "patch",
+          "type": "(",
+          "optional": false,
+          "description": "Performs a PATCH request and returns a chainable object @param data - The data to send in the request body @param onSuccess - Optional callback executed when the request succeeds @param onError - Optional callback executed when the request fails @param onLoading - Optional callback executed when loading state changes @returns A chainable object for further operations"
+        },
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": false,
+          "description": "Property data"
+        },
+        {
+          "name": "onSuccess",
+          "type": "(data: T) => void",
+          "optional": true,
+          "description": "Property onSuccess"
+        },
+        {
+          "name": "onError",
+          "type": "(error: Error) => void",
+          "optional": true,
+          "description": "Property onError"
+        },
+        {
+          "name": "onLoading",
+          "type": "(loading: boolean) => void",
+          "optional": true,
+          "description": "Property onLoading"
+        },
+        {
+          "name": "execute",
+          "type": "() => Promise<void>",
+          "optional": false,
+          "description": "Executes the chained operations sequentially @returns Promise that resolves when all operations complete"
+        },
+        {
+          "name": "then",
+          "type": "(callback: (data: T) => void) => ChainableRequest<T>",
+          "optional": false,
+          "description": "Adds a success callback to be executed after all operations complete @param callback - Function to execute on success @returns A chainable object for further operations"
+        },
+        {
+          "name": "catch",
+          "type": "(callback: (error: Error) => void) => ChainableRequest<T>",
+          "optional": false,
+          "description": "Adds an error callback to be executed if any operation fails @param callback - Function to execute on error @returns A chainable object for further operations"
+        },
+        {
+          "name": "finally",
+          "type": "(callback: () => void) => ChainableRequest<T>",
+          "optional": false,
+          "description": "Adds a callback to be executed after all operations complete (success or error) @param callback - Function to execute finally @returns A chainable object for further operations"
+        }
+      ]
+    },
+    {
+      "name": "UseFetchOptions",
+      "description": "Configuration options for the useFetchWithCallbacks hook",
+      "properties": []
+    }
+  ],
+  "hook": null
+}

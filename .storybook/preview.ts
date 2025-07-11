@@ -21,19 +21,15 @@ const preview: Preview = {
         unsafeTocHtml: true,
       },
     },
-    options: {
-      storySort: {
-        order: [
-          'Introduction',
-          'Getting Started',
-          'Basic Usage',
-          'Examples',
-          ['Basic Usage', 'CRUD Operations', 'Request Chaining'],
-          'Advanced',
-          ['Performance Optimization'],
-          'Documentation',
-        ],
-      },
+    options: {    storySort: {
+      order: [
+        'Introduction',
+        'API Reference',
+        'API Explorer',
+        'Request Chaining',
+        'Error Handling',
+      ],
+    },
     },
     backgrounds: {
       default: 'light',

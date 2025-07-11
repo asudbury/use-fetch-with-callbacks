@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import useFetchWithCallbacks from '../useFetchWithCallbacks';
+import { storyStyles, getButtonStyle } from './shared/storyStyles';
 
 interface User {
   id: number;
@@ -42,7 +43,7 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
       .put({ name: 'Final Name', email: 'final@example.com', id: 1 }, final => {
         addLog(`✅ Step 3: Put final update for ${final.name}`);
       })
-      .then(result => {
+      .then(() => {
         addLog(`🎉 Chain completed successfully with final result!`);
       })
       .catch(error => {
@@ -72,10 +73,10 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
           addLog(`✅ Step 3: Full update to ${updated.name}`);
         }
       )
-      .delete(deleted => {
+      .delete(() => {
         addLog(`✅ Step 4: Cleanup completed`);
       })
-      .then(result => {
+      .then(() => {
         addLog(`🎉 Complex chain completed!`);
       })
       .catch(error => {
@@ -88,75 +89,59 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
       .execute();
   };
 
-  const buttonStyle = {
-    padding: '10px 20px',
-    margin: '10px 10px 10px 0',
-    backgroundColor: isRunning ? '#ccc' : '#28a745',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: isRunning ? 'not-allowed' : 'pointer',
-  };
-
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h2>Request Chaining Example</h2>
-      <p>This demonstrates sequential HTTP operations using the chain API.</p>
-      <p>
-        Base URL: <code>{baseUrl}</code>
-      </p>
-
-      <div style={{ marginBottom: '20px' }}>
-        <button
-          onClick={runSimpleChain}
-          disabled={isRunning}
-          style={buttonStyle}
-        >
-          {isRunning ? 'Running...' : 'Run Simple Chain (GET → POST → PUT)'}
-        </button>
-
-        <button
-          onClick={runComplexChain}
-          disabled={isRunning}
-          style={buttonStyle}
-        >
-          {isRunning
-            ? 'Running...'
-            : 'Run Complex Chain (GET → PATCH → PUT → DELETE)'}
-        </button>
-
-        <button
-          onClick={clearLogs}
-          disabled={isRunning}
-          style={{
-            ...buttonStyle,
-            backgroundColor: isRunning ? '#ccc' : '#6c757d',
-          }}
-        >
-          Clear Logs
-        </button>
+    <div style={storyStyles.container}>
+      {/* Gradient Header */}
+      <div style={storyStyles.gradientHeader}>
+        <h1 style={storyStyles.gradientHeaderTitle}>🔗 Request Chaining</h1>
+        <p style={storyStyles.gradientHeaderSubtitle}>
+          Advanced sequential HTTP operations using the powerful chain API for complex data workflows and multi-step operations.
+        </p>
       </div>
 
-      <div style={{ marginTop: '20px' }}>
-        <h3>Chain Execution Logs:</h3>
-        <div
-          style={{
-            backgroundColor: '#f8f9fa',
-            padding: '15px',
-            borderRadius: '4px',
-            fontSize: '14px',
-            fontFamily: 'monospace',
-            minHeight: '200px',
-            border: '1px solid #dee2e6',
-          }}
-        >
+      <div style={storyStyles.card}>
+        <h3 style={storyStyles.cardHeader}>🚀 Chain Operations</h3>
+        <p style={storyStyles.pageDescription}>
+          Base URL: <code>{baseUrl}</code>
+        </p>
+
+        <div style={storyStyles.flexCenter}>
+          <button
+            onClick={runSimpleChain}
+            disabled={isRunning}
+            style={getButtonStyle('success', isRunning)}
+          >
+            {isRunning ? 'Running...' : 'Run Simple Chain (GET → POST → PUT)'}
+          </button>
+
+          <button
+            onClick={runComplexChain}
+            disabled={isRunning}
+            style={getButtonStyle('primary', isRunning)}
+          >
+            {isRunning
+              ? 'Running...'
+              : 'Run Complex Chain (GET → PATCH → PUT → DELETE)'}
+          </button>
+
+          <button
+            onClick={clearLogs}
+            disabled={isRunning}
+            style={getButtonStyle('secondary', isRunning)}
+          >
+            Clear Logs
+          </button>
+        </div>
+      </div>
+
+      <div style={storyStyles.card}>
+        <h3 style={storyStyles.cardHeader}>📋 Chain Execution Logs</h3>
+        <div style={storyStyles.logsContainer}>
           {logs.length === 0 ? (
-            <div style={{ color: '#6c757d', fontStyle: 'italic' }}>
-              Click a button above to see chain execution logs...
-            </div>
+            <em>No logs yet. Click one of the chain buttons to start.</em>
           ) : (
             logs.map((log, index) => (
-              <div key={index} style={{ marginBottom: '5px' }}>
+              <div key={index} style={storyStyles.mb16}>
                 {log}
               </div>
             ))
@@ -164,16 +149,9 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
         </div>
       </div>
 
-      <div
-        style={{
-          marginTop: '20px',
-          padding: '15px',
-          backgroundColor: '#e9ecef',
-          borderRadius: '4px',
-        }}
-      >
-        <h4>How Chain Works:</h4>
-        <ul>
+      <div style={storyStyles.card}>
+        <h3 style={storyStyles.cardHeader}>💡 How Chain Works</h3>
+        <ul style={{ paddingLeft: '20px', margin: 0 }}>
           <li>
             <strong>Sequential Execution:</strong> Each operation waits for the
             previous to complete
@@ -201,7 +179,7 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
 };
 
 const meta: Meta<typeof ChainExample> = {
-  title: 'useFetchWithCallbacks/Request Chaining',
+  title: 'Request Chaining',
   component: ChainExample,
   parameters: {
     layout: 'fullscreen',
@@ -223,7 +201,7 @@ const meta: Meta<typeof ChainExample> = {
 export default meta;
 type Story = StoryObj<typeof ChainExample>;
 
-export const Default: Story = {
+export const RequestChaining: Story = {
   args: {
     baseUrl: 'https://jsonplaceholder.typicode.com',
   },

@@ -141,8 +141,6 @@ describe('useFetchWithCallbacks', () => {
       useFetchWithCallbacks<any>('https://api.example.com/test')
     );
 
-    const successCallback = jest.fn();
-
     await act(async () => {
       await result.current.fetchData();
       await result.current.postData({ name: 'test' });
