@@ -203,7 +203,7 @@ export interface UseFetchOptions {
   /** Base URL to prepend to all endpoint paths */
   baseUrl?: string;
   /** Additional headers to include in all requests */
-  headers?: HeadersInit;
+  headers?: Record<string, string> | Headers;
   /** Request timeout in milliseconds (default: 10000) */
   timeout?: number;
 }
