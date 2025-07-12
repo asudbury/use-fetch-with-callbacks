@@ -27,7 +27,7 @@ if (typeof globalThis.crypto === 'undefined') {
 }
 
 if (typeof globalThis.crypto.getRandomValues === 'undefined') {
-  globalThis.crypto.getRandomValues = (arr) => {
+  globalThis.crypto.getRandomValues = arr => {
     return require('crypto').randomFillSync(arr);
   };
 }
