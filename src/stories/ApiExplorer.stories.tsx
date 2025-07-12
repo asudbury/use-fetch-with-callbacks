@@ -165,7 +165,7 @@ const ApiExplorer = () => {
     <div style={storyStyles.container}>
       {/* Gradient Header */}
       <div style={storyStyles.gradientHeader}>
-        <h1 style={storyStyles.gradientHeaderTitle}>🔍 API Explorer</h1>
+        <h1 style={storyStyles.gradientHeaderTitle}>API Explorer</h1>
         <p style={storyStyles.gradientHeaderSubtitle}>
           Interactive API testing interface that lets you explore different
           endpoints, methods, and configurations of the useFetchWithCallbacks

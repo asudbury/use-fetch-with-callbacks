@@ -109,7 +109,7 @@ const ErrorHandlingDemo = () => {
     <div style={storyStyles.container}>
       {/* Gradient Header */}
       <div style={storyStyles.gradientHeader}>
-        <h1 style={storyStyles.gradientHeaderTitle}>⚠️ Error Handling</h1>
+        <h1 style={storyStyles.gradientHeaderTitle}>Error Handling</h1>
         <p style={storyStyles.gradientHeaderSubtitle}>
           Comprehensive demonstration of how the useFetchWithCallbacks hook
           handles various error scenarios including network errors, timeouts,
@@ -159,6 +159,7 @@ const ErrorHandlingDemo = () => {
           </div>
         )}
 
+        <br />
         <button
           onClick={executeScenario}
           disabled={!selectedScenario || loading}
@@ -170,17 +171,12 @@ const ErrorHandlingDemo = () => {
 
       {/* Response Display */}
       {(response || error) && (
-        <div style={storyStyles.card}>
-          <h3 style={storyStyles.cardHeader}>📊 Result</h3>
+        <div>
+          <h3>📊 Result</h3>
           {error ? (
-            <div style={storyStyles.errorBox}>
+            <div>
               <strong>❌ Error Details:</strong>
-              <pre
-                style={combineStyles(storyStyles.codeBlock, {
-                  marginTop: '10px',
-                  whiteSpace: 'pre-wrap',
-                })}
-              >
+              <pre style={{ marginTop: '10px', whiteSpace: 'pre-wrap' }}>
                 {error.message}
               </pre>
               <div style={{ marginTop: '10px', fontSize: '14px' }}>
@@ -188,13 +184,9 @@ const ErrorHandlingDemo = () => {
               </div>
             </div>
           ) : (
-            <div style={storyStyles.successBox}>
+            <div>
               <strong>✅ Unexpected Success:</strong>
-              <pre
-                style={combineStyles(storyStyles.codeBlock, {
-                  marginTop: '10px',
-                })}
-              >
+              <pre style={{ marginTop: '10px' }}>
                 {JSON.stringify(response, null, 2)}
               </pre>
             </div>

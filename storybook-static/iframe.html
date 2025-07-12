@@ -128,7 +128,9 @@
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 20px;
+        padding: 16px;
+        margin: 0;
+        box-sizing: border-box;
         font-family:
           'Nunito Sans',
           -apple-system,
@@ -261,8 +263,8 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 4px;
         box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
-        margin: 25px auto 40px;
-        max-width: 600px;
+        margin: 25px 0 40px 0;
+        width: 100%;
       }
 
       .sb-previewBlock_header {
@@ -297,10 +299,9 @@
         border-spacing: 0;
         font-size: 13px;
         line-height: 20px;
-        margin: 25px auto 40px;
-        max-width: 600px;
-        text-align: left;
+        margin: 25px 0 40px 0;
         width: 100%;
+        text-align: left;
       }
       .sb-argstableBlock th:first-of-type,
       .sb-argstableBlock td:first-of-type {
@@ -390,6 +391,78 @@
         margin-bottom: 4px;
         padding: 2px 5px;
       }
+      /* Responsive Design Improvements */
+      @media (max-width: 900px) {
+        .sb-previewBlock,
+        .sb-argstableBlock {
+          width: 100%;
+          margin: 10px 0;
+        }
+        .sb-previewBlock_header {
+          gap: 8px;
+          height: 32px;
+          padding: 0 6px;
+        }
+        .sb-previewBlock_body {
+          height: 120px;
+        }
+        .sb-heading {
+          font-size: 12px;
+          padding-right: 10px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .sb-previewBlock,
+        .sb-argstableBlock {
+          width: 100vw;
+          margin: 2px 0;
+          font-size: 10px;
+        }
+        .sb-previewBlock {
+          padding: 2px !important;
+        }
+        body h1, .sb-wrapper h1, .sb-nopreview_heading.sb-heading {
+          font-size: 1.1em !important;
+        }
+        body h2, .sb-wrapper h2 {
+          font-size: 1em !important;
+        }
+        body h3, .sb-wrapper h3 {
+          font-size: 0.9em !important;
+        }
+        .sb-previewBlock_header {
+          gap: 2px;
+          height: 18px;
+          padding: 0 1px;
+        }
+        .sb-previewBlock_body {
+          height: 50px;
+        }
+        .sb-heading {
+          font-size: 8px;
+          padding-right: 2px;
+        }
+        .sb-argstableBlock th,
+        .sb-argstableBlock td {
+          padding: 2px 3px;
+        }
+        .sb-argstableBlock {
+          font-size: 9px;
+        }
+        .sb-nopreview_main {
+          padding: 4px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .sb-previewBlock_body {
+          height: 40px;
+        }
+        .sb-heading {
+          font-size: 8px;
+        }
+      }
     </style>
 
     <script>
@@ -424,10 +497,6 @@
     <div class="sb-preparing-docs sb-wrapper">
       <div class="sb-previewBlock">
         <div class="sb-previewBlock_header">
-          <div class="sb-previewBlock_icon"></div>
-          <div class="sb-previewBlock_icon"></div>
-          <div class="sb-previewBlock_icon"></div>
-          <div class="sb-previewBlock_icon"></div>
         </div>
         <div class="sb-previewBlock_body">
           <div class="sb-loader"></div>

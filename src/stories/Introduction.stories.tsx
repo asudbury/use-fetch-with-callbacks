@@ -328,34 +328,9 @@ const IntroductionComponent = () => {
             Key Features
           </h2>
         </div>
-        <ul
-          style={{
-            paddingLeft: '0',
-            lineHeight: '1.8',
-            fontSize: '16px',
-            listStyle: 'none',
-          }}
-        >
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#48bb78',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+        <ul>
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -372,26 +347,8 @@ const IntroductionComponent = () => {
               PATCH support
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#667eea',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -409,26 +366,8 @@ const IntroductionComponent = () => {
               chainable API
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#f093fb',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -445,26 +384,8 @@ const IntroductionComponent = () => {
               callbacks
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#48bb78',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -481,26 +402,8 @@ const IntroductionComponent = () => {
               efficient state management
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#667eea',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -517,26 +420,8 @@ const IntroductionComponent = () => {
               types
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#f093fb',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -554,26 +439,8 @@ const IntroductionComponent = () => {
               support
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#48bb78',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -590,26 +457,8 @@ const IntroductionComponent = () => {
               <strong>Timeout Support</strong>: Configurable request timeouts
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#667eea',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"
@@ -629,26 +478,8 @@ const IntroductionComponent = () => {
               requests
             </span>
           </li>
-          <li
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '12px',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#f093fb',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                flexShrink: 0,
-              }}
-            >
+          <li>
+            <div>
               <svg
                 width="14"
                 height="14"

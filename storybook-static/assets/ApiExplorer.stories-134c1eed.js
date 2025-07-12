@@ -110,7 +110,7 @@ const G = () => {
           children: [
             e.jsx('h1', {
               style: t.gradientHeaderTitle,
-              children: '🔍 API Explorer',
+              children: 'API Explorer',
             }),
             e.jsx('p', {
               style: t.gradientHeaderSubtitle,

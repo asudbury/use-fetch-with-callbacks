@@ -21,27 +21,28 @@ export const storyStyles = {
     color: '#1a1a1a',
     borderBottom: '2px solid #e9ecef',
     paddingBottom: '12px',
+    textAlign: 'left' as const,
   },
 
   // Gradient header (like Introduction) - standardized margins, padding, borders
   gradientHeader: {
-    margin: '0 0 32px 0', // Consistent bottom margin
+    margin: '0 0 2rem 0', // Consistent bottom margin
     padding: '40px 32px', // Consistent horizontal padding
     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     border: 'none', // Explicit no border
     borderRadius: '12px',
-    textAlign: 'center' as const,
+    textAlign: 'left' as const,
     color: 'white',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
   },
 
   gradientHeaderTitle: {
-    fontSize: '2.5em',
     margin: '0 0 16px 0', // Consistent bottom margin
     padding: '0', // Explicit no padding
     fontWeight: '700',
     letterSpacing: '-1px',
     border: 'none', // Explicit no border
+    textAlign: 'left' as const,
   },
 
   gradientHeaderSubtitle: {
@@ -50,10 +51,10 @@ export const storyStyles = {
     padding: '0', // Explicit no padding
     border: 'none', // Explicit no border
     opacity: 0.95,
-    maxWidth: '600px',
     marginLeft: 'auto',
     marginRight: 'auto',
     lineHeight: '1.5',
+    textAlign: 'left' as const,
   },
 
   // Page description
@@ -80,6 +81,7 @@ export const storyStyles = {
     fontWeight: '600',
     marginBottom: '16px',
     color: '#495057',
+    textAlign: 'left' as const,
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
