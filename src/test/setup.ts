@@ -21,14 +21,13 @@ globalThis.AbortController = class {
 };
 
 // Polyfill crypto.getRandomValues for Node.js
-if (typeof globalThis.crypto === 'undefined') {
-  // @ts-ignore
-  globalThis.crypto = require('crypto');
-}
-
-if (typeof globalThis.crypto.getRandomValues === 'undefined') {
-  globalThis.crypto.getRandomValues = arr => {
-    return require('crypto').randomFillSync(arr);
+// Polyfill crypto.getRandomValues for Node.js
+if (typeof globalThis.crypto === 'undefined' || !globalThis.crypto.getRandomValues) {
+  const nodeCrypto = require('crypto');
+  globalThis.crypto = {
+    getRandomValues: (arr) => nodeCrypto.randomFillSync(arr),
+    subtle: {} as SubtleCrypto,
+    randomUUID: () => (typeof nodeCrypto.randomUUID === 'function' ? nodeCrypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'),
   };
 }
 
