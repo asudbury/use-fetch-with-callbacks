@@ -20,6 +20,18 @@ globalThis.AbortController = class {
   abort = vi.fn();
 };
 
+// Polyfill crypto.getRandomValues for Node.js
+if (typeof globalThis.crypto === 'undefined') {
+  // @ts-ignore
+  globalThis.crypto = require('crypto');
+}
+
+if (typeof globalThis.crypto.getRandomValues === 'undefined') {
+  globalThis.crypto.getRandomValues = (arr) => {
+    return require('crypto').randomFillSync(arr);
+  };
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
 });
