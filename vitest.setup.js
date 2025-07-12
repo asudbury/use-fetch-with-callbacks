@@ -1,5 +1,6 @@
 // vitest.setup.js
-if (typeof globalThis.crypto === 'undefined') {
-  globalThis.crypto = require('crypto');
-  globalThis.crypto.getRandomValues = (arr) => require('crypto').randomFillSync(arr);
+import { webcrypto } from 'node:crypto';
+
+if (!globalThis.crypto) {
+  globalThis.crypto = webcrypto;
 }
