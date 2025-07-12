@@ -22,6 +22,7 @@
     "build-storybook": "storybook build",
     "build-storybook:gh-pages": "storybook build --output-dir storybook-static",
     "preview-storybook": "npx http-server storybook-static -p 8080 -o",
+    "storybook:publish": "npm run build-storybook && gh-pages -d storybook-static",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src/**/*.{ts,tsx}",
@@ -98,7 +99,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^6.0.0",
     "http-server": "^14.0.0",
-
     "jsdoc": "^4.0.4",
     "jsdoc-to-markdown": "^9.1.1",
     "prettier": "^3.0.0",
@@ -106,6 +106,7 @@
     "react-dom": "^18.2.0",
     "storybook": "^7.6.0",
     "typescript": "^5.0.0",
+    "esbuild": "0.25.6",
     "vite": "^4.4.5",
     "vitest": "^3.2.4"
   },
