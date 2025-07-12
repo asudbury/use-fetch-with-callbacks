@@ -116,7 +116,10 @@ Chainable request interface for sequential operations
   // Helper to convert style object to inline style string
   const styleToString = (styleObj: Record<string, any>) => {
     return Object.entries(styleObj)
-      .map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}:${value}`)
+      .map(
+        ([key, value]) =>
+          `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}:${value}`
+      )
       .join(';');
   };
 

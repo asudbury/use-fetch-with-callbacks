@@ -22,12 +22,18 @@ globalThis.AbortController = class {
 
 // Polyfill crypto.getRandomValues for Node.js
 // Polyfill crypto.getRandomValues for Node.js
-if (typeof globalThis.crypto === 'undefined' || !globalThis.crypto.getRandomValues) {
+if (
+  typeof globalThis.crypto === 'undefined' ||
+  !globalThis.crypto.getRandomValues
+) {
   const nodeCrypto = require('crypto');
   globalThis.crypto = {
-    getRandomValues: (arr) => nodeCrypto.randomFillSync(arr),
+    getRandomValues: arr => nodeCrypto.randomFillSync(arr),
     subtle: {} as SubtleCrypto,
-    randomUUID: () => (typeof nodeCrypto.randomUUID === 'function' ? nodeCrypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'),
+    randomUUID: () =>
+      typeof nodeCrypto.randomUUID === 'function'
+        ? nodeCrypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx',
   };
 }
 
