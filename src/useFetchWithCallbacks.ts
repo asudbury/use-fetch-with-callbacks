@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 
 /**
  * Result object returned by the useFetchWithCallbacks hook
@@ -262,10 +262,13 @@ const useFetchWithCallbacks = <T>(
 
   const baseUrl = options?.baseUrl ?? '';
   const timeout = options?.timeout ?? 10000;
-  const headers = {
-    'Content-Type': 'application/json',
-    ...options?.headers,
-  };
+  const headers = useMemo(
+    () => ({
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    }),
+    [options?.headers]
+  );
 
   const setLoadingState = (
     isLoading: boolean,
@@ -380,7 +383,7 @@ const useFetchWithCallbacks = <T>(
         }
       }
     },
-    [timeout]
+    []
   );
 
   // Cleanup effect to abort requests when component unmounts

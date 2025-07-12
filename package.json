@@ -1,6 +1,6 @@
 {
   "name": "use-fetch-with-callbacks",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "A powerful React hook for HTTP requests with comprehensive callback support, request chaining, and TypeScript integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
