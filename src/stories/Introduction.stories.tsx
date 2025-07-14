@@ -1079,12 +1079,4 @@ const { fetchData } = useFetchWithCallbacks<User>('/users/1', {
 
 export const Introduction: Story = {
   render: () => <IntroductionComponent />,
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Welcome to useFetchWithCallbacks! Explore the features and navigate through the documentation.',
-      },
-    },
-  },
 };

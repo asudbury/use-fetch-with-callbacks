@@ -27,7 +27,7 @@
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "format:check": "prettier --check src/**/*.{ts,tsx}",
-    "docs:generate": "node scripts/generate-docs.js",
+    "docs:generate": "node scripts/generate-docs.cjs",
     "docs:markdown": "jsdoc2md --files src/useFetchWithCallbacks.ts > docs/api.md",
     "docs:build": "npm run docs:generate",
     "analyze": "node scripts/analyze-bundle.js",
