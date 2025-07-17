@@ -212,7 +212,7 @@ const useFetchWithCallbacks = <T>(
       abortSignal?: AbortSignal
     ): Promise<T> => {
       const url = `${baseUrl}${params?.endpoint ?? endpoint}`;
-      const fetchOptions: RequestInit = {
+      const fetchOptions: Record<string, unknown> = {
         method,
         headers,
         signal: abortSignal,
