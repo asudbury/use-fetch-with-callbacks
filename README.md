@@ -59,26 +59,26 @@ const UserProfile = () => {
     });
 
   const handleFetch = () => {
-    fetchData(
-      data => console.log('User loaded:', data),
-      error => console.error('Failed to load user:', error),
-      loading => console.log('Loading state:', loading)
-    );
+    fetchData({
+      onSuccess: data => console.log('User loaded:', data),
+      onError: error => console.error('Failed to load user:', error),
+      onLoading: loading => console.log('Loading state:', loading),
+    });
   };
 
   const handleUpdate = () => {
-    postData(
-      { name: 'John Doe', email: 'john@example.com' },
-      data => console.log('User updated:', data),
-      error => console.error('Update failed:', error)
-    );
+    postData({
+      data: { name: 'John Doe', email: 'john@example.com' },
+      onSuccess: data => console.log('User updated:', data),
+      onError: error => console.error('Update failed:', error),
+    });
   };
 
   const handleDelete = () => {
-    deleteData(
-      data => console.log('User deleted:', data),
-      error => console.error('Delete failed:', error)
-    );
+    deleteData({
+      onSuccess: data => console.log('User deleted:', data),
+      onError: error => console.error('Delete failed:', error),
+    });
   };
 
   return (
@@ -94,60 +94,50 @@ const UserProfile = () => {
 };
 ```
 
-## 🔗 Request Chaining
+## � API Reference
 
-Execute multiple HTTP requests sequentially:
+### `RequestParams<T>`
 
-```tsx
-const UserWorkflow = () => {
-  const { chain } = useFetchWithCallbacks<User>('/users/1', {
-    baseUrl: 'https://api.example.com',
-  });
+The `RequestParams<T>` type is used for all request methods (GET, POST, PUT, DELETE, PATCH) and for chainable operations. It allows you to specify the endpoint, request body, and callbacks for handling success, error, and loading states.
 
-  const handleWorkflow = async () => {
-    // Execute a complex workflow
-    await chain()
-      .fetch(user => {
-        console.log('1. Fetched user:', user);
-      })
-      .patch(
-        {
-          lastLogin: new Date(),
-        },
-        updated => {
-          console.log('2. Updated login time:', updated);
-        }
-      )
-      .put(
-        {
-          status: 'active',
-        },
-        activated => {
-          console.log('3. Activated user:', activated);
-        }
-      )
-      .delete(deleted => {
-        console.log('4. Cleaned up:', deleted);
-      })
-      .then(finalResult => {
-        console.log('✅ Workflow completed:', finalResult);
-      })
-      .catch(error => {
-        console.error('❌ Workflow failed:', error);
-      })
-      .finally(() => {
-        console.log('🔄 Workflow finished');
-      })
-      .execute();
-  };
-
-  return <button onClick={handleWorkflow}>Run Workflow</button>;
+```typescript
+type RequestParams<T> = {
+  endpoint?: string;
+  data?: unknown;
+  onSuccess?: (data: T) => void;
+  onError?: (error: Error) => void;
+  onLoading?: (loading: boolean) => void;
 };
 ```
 
-## 📡 Multiple Concurrent Requests
+**Properties:**
 
-Fetch from multiple endpoints simultaneously:
+- `endpoint` (string, optional): Override the default endpoint for this request.
+- `data` (unknown, optional): Data to send in the request body (for POST, PUT, PATCH).
+- `onSuccess` ((data: T) => void, optional): Callback executed when the request succeeds.
+- `onError` ((error: Error) => void, optional): Callback executed when the request fails.
+- `onLoading` ((loading: boolean) => void, optional): Callback executed when loading state changes.
+
+**Example:**
+
+```tsx
+fetchData({
+  endpoint: '/users/1',
+  onSuccess: user => console.log('Loaded user:', user),
+  onError: error => console.error('Failed:', error),
+  onLoading: loading => console.log('Loading:', loading),
+});
+
+postData({
+  endpoint: '/users',
+  data: { name: 'Jane' },
+  onSuccess: user => console.log('Created:', user),
+});
+```
+
+**Note:** Each chainable method (`fetch`, `post`, `put`, `patch`, `delete`) now accepts an optional `endpoint` as the first argument, allowing you to chain requests to different endpoints in a single workflow.
+
+## 📡 Multiple Concurrent Requests
 
 ```tsx
 const Dashboard = () => {
@@ -156,14 +146,13 @@ const Dashboard = () => {
   });
 
   const loadDashboard = () => {
-    fetchMultipleData(
-      ['/users', '/posts', '/comments'],
-      results => {
+    fetchMultipleData({
+      endpoints: ['/users', '/posts', '/comments'],
+      onSuccess: results => {
         console.log('All data loaded:', results);
-        // results[0] = users, results[1] = posts, results[2] = comments
       },
-      error => console.error('Failed to load dashboard:', error)
-    );
+      onError: error => console.error('Failed to load dashboard:', error),
+    });
   };
 
   return <button onClick={loadDashboard}>Load Dashboard</button>;
@@ -184,6 +173,7 @@ const api = useFetchWithCallbacks<ApiResponse>('/data', {
 });
 ```
 
+
 ## 📝 API Reference
 
 ### `useFetchWithCallbacks<T>(endpoint, options?)`
@@ -199,17 +189,17 @@ const api = useFetchWithCallbacks<ApiResponse>('/data', {
 
 ```typescript
 interface FetchResult<T> {
-  response: T | null;           // The response data
-  loading: boolean;             // Loading state
-  error: Error | null;          // Error state
-  requestCompleted: boolean;    // Whether any request completed
-  fetchData: (...) => Promise<void>;     // GET request
-  postData: (...) => Promise<void>;      // POST request
-  putData: (...) => Promise<void>;       // PUT request
-  deleteData: (...) => Promise<void>;    // DELETE request
-  patchData: (...) => Promise<void>;     // PATCH request
-  fetchMultipleData: (...) => Promise<void>; // Multiple concurrent requests
-  chain: () => ChainableRequest<T>;      // Request chaining
+  response: T | null;
+  loading: boolean;
+  error: Error | null;
+  requestCompleted: boolean;
+  fetchData: (...) => Promise<void>;
+  postData: (...) => Promise<void>;
+  putData: (...) => Promise<void>;
+  deleteData: (...) => Promise<void>;
+  patchData: (...) => Promise<void>;
+  fetchMultipleData: (...) => Promise<void>;
+  chain: () => ChainableRequest<T>;
 }
 ```
 
@@ -223,21 +213,93 @@ interface UseFetchOptions {
 }
 ```
 
-### `ChainableRequest<T>`
+### `RequestParams<T>`
+
+The `RequestParams<T>` type is used for all request methods (GET, POST, PUT, DELETE, PATCH) and for chainable operations. It allows you to specify the endpoint, request body, and callbacks for handling success, error, and loading states.
 
 ```typescript
-interface ChainableRequest<T> {
-  fetch: (...) => ChainableRequest<T>;    // Add GET request to chain
-  post: (...) => ChainableRequest<T>;     // Add POST request to chain
-  put: (...) => ChainableRequest<T>;      // Add PUT request to chain
-  delete: (...) => ChainableRequest<T>;   // Add DELETE request to chain
-  patch: (...) => ChainableRequest<T>;    // Add PATCH request to chain
-  then: (callback) => ChainableRequest<T>; // Success callback
-  catch: (callback) => ChainableRequest<T>; // Error callback
-  finally: (callback) => ChainableRequest<T>; // Cleanup callback
-  execute: () => Promise<void>;           // Execute the chain
-}
+type RequestParams<T> = {
+  endpoint?: string; // Optional
+  data?: unknown; // Optional
+  onSuccess?: (data: T) => void; // Optional
+  onError?: (error: Error) => void; // Optional
+  onLoading?: (loading: boolean) => void; // Optional
+};
 ```
+
+**Properties:**
+
+- `endpoint` (string, optional): Override the default endpoint for this request.
+- `data` (unknown, optional): Data to send in the request body (for POST, PUT, PATCH).
+- `onSuccess` ((data: T) => void, optional): Callback executed when the request succeeds.
+- `onError` ((error: Error) => void, optional): Callback executed when the request fails.
+- `onLoading` ((loading: boolean) => void, optional): Callback executed when loading state changes.
+
+**Example:**
+
+```tsx
+fetchData({
+  endpoint: '/users/1',
+  onSuccess: user => console.log('Loaded user:', user),
+  onError: error => console.error('Failed:', error),
+  onLoading: loading => console.log('Loading:', loading),
+});
+
+postData({
+  endpoint: '/users',
+  data: { name: 'Jane' },
+  onSuccess: user => console.log('Created:', user),
+});
+```
+
+
+### `ChainableRequest<T>`
+
+The `chain` API allows you to compose and execute multiple requests in sequence, with full callback support for each step and for the overall chain. Each chainable method can override the endpoint and provide per-request callbacks.
+
+**Available methods:**
+
+- `fetch(params?: RequestParams<T>)`
+- `post(params: RequestParams<T>)`
+- `put(params: RequestParams<T>)`
+- `delete(params?: RequestParams<T>)`
+- `patch(params: RequestParams<T>)`
+- `then(callback: (data: T) => void)`
+- `catch(callback: (error: Error) => void)`
+- `finally(callback: () => void)`
+- `execute()`
+
+**Example:**
+
+```tsx
+const { chain } = useFetchWithCallbacks<User>('/users/1', { baseUrl: 'https://api.example.com' });
+
+chain()
+  .fetch({
+    endpoint: '/users/1',
+    onSuccess: user => console.log('Loaded user:', user),
+  })
+  .put({
+    endpoint: '/users/1',
+    data: { name: 'Updated Name' },
+    onSuccess: user => console.log('Updated user:', user),
+  })
+  .then(user => {
+    // Called after the last successful request in the chain
+    console.log('Chain completed. Final user:', user);
+  })
+  .catch(error => {
+    // Called if any request in the chain fails
+    console.error('Chain failed:', error);
+  })
+  .finally(() => {
+    // Always called at the end
+    console.log('Chain finished');
+  })
+  .execute();
+```
+
+> **Tip:** Each chainable method (`fetch`, `post`, `put`, `patch`, `delete`) accepts an optional `endpoint` and per-request callbacks, allowing you to build flexible, readable workflows.
 
 ## 🛡️ Error Handling
 
@@ -302,15 +364,20 @@ const { response, fetchData } = useFetchWithCallbacks<User>('/users/1');
 
 ## 📄 License
 
-MIT
+MIT © Adrian Sudbury
+
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a [Pull Request](https://github.com/asudbury/use-fetch-with-callbacks/pulls).
+
+- [Open a Pull Request](https://github.com/asudbury/use-fetch-with-callbacks/pulls)
+- [View All Issues](https://github.com/asudbury/use-fetch-with-callbacks/issues)
+- [Create a New Issue](https://github.com/asudbury/use-fetch-with-callbacks/issues/new)
 
 ## 📞 Support
 
-If you have any questions or need help, please open an issue on GitHub.
+If you have any questions or need help, please [Open an issue](https://github.com/asudbury/use-fetch-with-callbacks/issues) or use the links above.
 
 ---
 

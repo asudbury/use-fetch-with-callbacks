@@ -1,12 +1,12 @@
 // Main export
 export { default } from './useFetchWithCallbacks';
 
-// Named exports for types
 export type {
   FetchResult,
   ChainableRequest,
   UseFetchOptions,
-} from './useFetchWithCallbacks';
+  RequestParams,
+} from './types';
 
 // Default export for convenience
 export { default as useFetchWithCallbacks } from './useFetchWithCallbacks';
