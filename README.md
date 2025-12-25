@@ -369,7 +369,7 @@ MIT © Adrian Sudbury
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a [Pull Request](https://github.com/asudbury/use-fetch-with-callbacks/pulls).
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) to learn about our development process, coding standards, and how to submit pull requests.
 
 - [Open a Pull Request](https://github.com/asudbury/use-fetch-with-callbacks/pulls)
 - [View All Issues](https://github.com/asudbury/use-fetch-with-callbacks/issues)
