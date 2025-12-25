@@ -14,8 +14,8 @@ A powerful, production-ready React hook for HTTP requests with comprehensive cal
 ## 🎯 Key Features
 
 - **✅ Complete HTTP Methods**: GET, POST, PUT, DELETE, PATCH support
-- **🔗 Request Chaining**: Sequential operations with chainable API
 - **📞 Callback Support**: Success, error, and loading callbacks
+- **🔗 Request Chaining**: Sequential operations with chainable API
 - **⚡ Performance Optimized**: Memory leak prevention and efficient state management
 - **🛡️ Type Safe**: Full TypeScript support with generic types
 - **🚫 Request Cancellation**: Built-in AbortController support
@@ -33,6 +33,67 @@ npm install use-fetch-with-callbacks
 
 \`\`\`tsx
 import useFetchWithCallbacks from 'use-fetch-with-callbacks';
+
+function MyComponent() {
+  const { fetchData, loading, response, error } = useFetchWithCallbacks(
+    'https://api.example.com/users'
+  );
+
+  const handleFetch = () => {
+    fetchData(
+      (data) => console.log('Success:', data),
+      (error) => console.error('Error:', error),
+      (loading) => console.log('Loading:', loading)
+    );
+  };
+
+  return (
+    <div>
+      <button onClick={handleFetch} disabled={loading}>
+        {loading ? 'Loading...' : 'Fetch Data'}
+      </button>
+      {error && <p>Error: {error.message}</p>}
+      {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
+    </div>
+  );
+}
+\`\`\`
+
+## 🚀 Quick Start2
+
+\`\`\`tsx
+import useFetchWithCallbacks from 'use-fetch-with-callbacks';
+
+function MyComponent() {
+  const { fetchData, loading, response, error } = useFetchWithCallbacks(
+    'https://api.example.com/users'
+  );
+
+  const handleFetch = () => {
+    fetchData(
+      (data) => console.log('Success:', data),
+      (error) => console.error('Error:', error),
+      (loading) => console.log('Loading:', loading)
+    );
+  };
+
+  return (
+    <div>
+      <button onClick={handleFetch} disabled={loading}>
+        {loading ? 'Loading...' : 'Fetch Data'}
+      </button>
+      {error && <p>Error: {error.message}</p>}
+      {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
+    </div>
+  );
+}
+\`\`\`
+
+## 🚀 Quick Start2
+
+\`\`\`tsx
+import useFetchWithCallbacks from 'use-fetch-with-callbacks';
+import type { RequestParams } from 'use-fetch-with-callbacks';
 
 function MyComponent() {
   const { fetchData, loading, response, error } = useFetchWithCallbacks(
@@ -329,169 +390,54 @@ const IntroductionComponent = () => {
           </h2>
         </div>
         <ul>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <polyline points="20,6 9,17 4,12" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Complete HTTP Methods</strong>: GET, POST, PUT, DELETE,
               PATCH support
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Request Chaining</strong>: Sequential operations with
               chainable API
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Callback Support</strong>: Success, error, and loading
               callbacks
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Performance Optimized</strong>: Memory leak prevention and
               efficient state management
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Type Safe</strong>: Full TypeScript support with generic
               types
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Request Cancellation</strong>: Built-in AbortController
               support
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12,6 12,12 16,14" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Timeout Support</strong>: Configurable request timeouts
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>Concurrent Requests</strong>: Handle multiple simultaneous
               requests
             </span>
           </li>
-          <li>
-            <div>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <path d="M3 3v5h5" />
-                <path d="M3 8l9-9 9 9-9 9-9-9" />
-              </svg>
-            </div>
+          <li style={{ padding: '10px' }}>
             <span>
               <strong>State Management</strong>: Comprehensive loading, error,
               and response states
@@ -630,7 +576,6 @@ const IntroductionComponent = () => {
             efficient state management.
           </p>
         </div>
-
         <div
           style={{
             padding: '25px',
@@ -651,35 +596,93 @@ const IntroductionComponent = () => {
           >
             <div
               style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                backgroundColor: '#48bb78',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '15px',
-                boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
+          width: '48px',
+          height: '48px',
+          borderRadius: '50%',
+          backgroundColor: '#1cd2d8',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginRight: '15px',
+          boxShadow: '0 4px 12px rgba(240, 147, 251, 0.3)',
               }}
             >
               <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
               >
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
               </svg>
             </div>
             <h3
               style={{
-                margin: 0,
-                color: '#2d3748',
-                fontSize: '20px',
-                fontWeight: '600',
+          margin: 0,
+          color: '#2d3748',
+          fontSize: '20px',
+          fontWeight: '600',
+              }}
+            >
+              Callbacks
+            </h3>
+          </div>
+          <p style={{ margin: 0, color: '#4a5568', lineHeight: '1.6' }}>
+            Success, error, and loading callbacks for full control over request lifecycle.
+          </p>
+        </div>
+                <div
+          style={{
+            padding: '25px',
+            backgroundColor: '#ffffff',
+            borderRadius: '12px',
+            border: '1px solid #e9ecef',
+            fontSize: '16px',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '15px',
+            }}
+          >
+            <div
+              style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '50%',
+          backgroundColor: '#48bb78',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginRight: '15px',
+          boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
+              }}
+            >
+              <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+              >
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+            </div>
+            <h3
+              style={{
+          margin: 0,
+          color: '#2d3748',
+          fontSize: '20px',
+          fontWeight: '600',
               }}
             >
               Chainable
@@ -705,78 +708,182 @@ const IntroductionComponent = () => {
       >
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '20px',
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: '20px',
           }}
         >
           <div
-            style={{
-              width: '40px',
-              height: '40px',
-              backgroundColor: '#48bb78',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginRight: '15px',
-              boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
-            }}
+        style={{
+          width: '40px',
+          height: '40px',
+          backgroundColor: '#48bb78',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginRight: '15px',
+          boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
+        }}
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-            >
-              <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
-            </svg>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+        >
+          <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
+        </svg>
           </div>
           <h2 style={{ margin: 0, fontSize: '28px', color: '#333' }}>
-            Quick Start
+        Quick Start
           </h2>
         </div>
         <pre
           style={{
-            backgroundColor: '#f8f9fa',
-            color: '#333',
-            padding: '20px',
-            borderRadius: '8px',
-            fontSize: '14px',
-            fontFamily: 'monospace',
-            margin: '0',
-            border: '1px solid #e9ecef',
-            overflow: 'auto',
+        backgroundColor: '#f8f9fa',
+        color: '#333',
+        padding: '20px',
+        borderRadius: '8px',
+        fontSize: '14px',
+        fontFamily: 'monospace',
+        margin: '0',
+        border: '1px solid #e9ecef',
+        overflow: 'auto',
           }}
         >
           {`import useFetchWithCallbacks from 'use-fetch-with-callbacks';
 
-function MyComponent() {
-  const { fetchData, loading, response, error } = useFetchWithCallbacks(
-    'https://api.example.com/users'
-  );
+    function MyComponent() {
+      const { fetchData, loading, response, error } = useFetchWithCallbacks(
+        'https://api.example.com/users'
+      );
 
-  const handleFetch = () => {
-    fetchData(
+      const handleFetch = () => {
+        fetchData(
       (data) => console.log('Success:', data),
       (error) => console.error('Error:', error),
       (loading) => console.log('Loading:', loading)
-    );
-  };
+        );
+      };
 
-  return (
-    <div>
+      return (
+        <div>
       <button onClick={handleFetch} disabled={loading}>
         {loading ? 'Loading...' : 'Fetch Data'}
       </button>
       {error && <p>Error: {error.message}</p>}
       {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
-    </div>
-  );
-}`}
+        </div>
+      );
+    }`}
         </pre>
+      </div>
+
+      {/* Callback Section */}
+      <div
+        style={{
+          marginBottom: '30px',
+          padding: '30px',
+          backgroundColor: '#ffffff',
+          borderRadius: '12px',
+          border: '1px solid #e9ecef',
+          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+        }}
+      >
+        <div
+          style={{
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: '20px',
+          }}
+        >
+          <div
+        style={{
+          width: '40px',
+          height: '40px',
+          backgroundColor: '#1cd2d8',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginRight: '15px',
+          boxShadow: '0 4px 12px rgba(28, 210, 216, 0.3)',
+        }}
+          >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+          </div>
+          <h2 style={{ margin: 0, fontSize: '28px', color: '#333' }}>
+        Callback Usage
+          </h2>
+        </div>
+        <p style={{ fontSize: '16px', color: '#4a5568', marginBottom: '16px' }}>
+          <strong>useFetchWithCallbacks</strong> lets you provide <strong>success</strong>, <strong>error</strong>, and <strong>loading</strong> callbacks for full control over the request lifecycle using the <code>RequestParams&lt;T&gt;</code> type:
+        </p>
+        <pre
+          style={{
+        backgroundColor: '#f8f9fa',
+        color: '#333',
+        padding: '20px',
+        borderRadius: '8px',
+        fontSize: '14px',
+        fontFamily: 'monospace',
+        margin: '0',
+        border: '1px solid #e9ecef',
+        overflow: 'auto',
+          }}
+        >
+          {`import useFetchWithCallbacks from 'use-fetch-with-callbacks';
+
+    function MyComponent() {
+      const { fetchData } = useFetchWithCallbacks('https://api.example.com/users');
+
+      const params: RequestParams<User[]> = {
+        onSuccess: (data) => { console.log('Fetched data:', data); },
+        onError: (error) => { alert('Fetch failed: ' + error.message) },
+        onLoading: (loading) => { console.log('Loading:', loading); },
+      };
+
+      const handleFetch = () => {
+        fetchData(params);
+      };
+
+      return (
+        <button onClick={handleFetch}>Fetch Users</button>
+      );
+    }`}
+        </pre>
+        <ul
+          style={{
+        paddingLeft: '20px',
+        lineHeight: '1.8',
+        fontSize: '16px',
+        color: '#666',
+        marginTop: '16px',
+          }}
+        >
+          <li>
+        <strong>Success callback:</strong> <code>onSuccess</code> is called with the response data when the request succeeds.
+          </li>
+          <li>
+        <strong>Error callback:</strong> <code>onError</code> is called with the error object if the request fails.
+          </li>
+          <li>
+        <strong>Loading callback:</strong> <code>onLoading</code> is called with the loading state (<code>true</code> or <code>false</code>) on request start and finish.
+          </li>
+        </ul>
       </div>
 
       {/* Request Chaining Section */}
@@ -919,19 +1026,14 @@ await chain()
         >
           {`const { fetchData, postData, putData, patchData, deleteData } = useFetchWithCallbacks<User>('/users/1');
 
-// GET request
 fetchData(onSuccess, onError, onLoading);
 
-// POST request
 postData(newUser, onSuccess, onError, onLoading);
 
-// PUT request
 putData(updatedUser, onSuccess, onError, onLoading);
 
-// PATCH request
 patchData(partialUpdate, onSuccess, onError, onLoading);
 
-// DELETE request
 deleteData(onSuccess, onError, onLoading);`}
         </pre>
       </div>

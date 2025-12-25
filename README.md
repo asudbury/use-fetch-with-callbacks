@@ -2,6 +2,19 @@
 
 A powerful React hook for HTTP requests with comprehensive callback support, request chaining, and TypeScript integration.
 
+
+## 📚 DeepWiki Project Knowledge Base
+
+> **Explore the full documentation, architecture, and deep technical notes for this project on DeepWiki:**
+>
+> [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/asudbury/use-fetch-with-callbacks)
+>
+> - Comprehensive guides, diagrams, and design decisions
+> - Contributor onboarding and advanced usage tips
+> - Maintainer notes, troubleshooting, and best practices
+>
+> **This is the canonical knowledge base for the project. If you're contributing, maintaining, or deploying, start here!**
+
 ## ✨ Features
 
 - 🔄 **Full HTTP Methods**: GET, POST, PUT, DELETE, PATCH with callback support
@@ -92,6 +105,56 @@ const UserProfile = () => {
     </div>
   );
 };
+```
+
+## 🧩 Chained Example: Fetching Two Endpoints
+
+```tsx
+import React, { useState } from 'react';
+import useFetchWithCallbacks from 'use-fetch-with-callbacks';
+
+function App() {
+  const { loading, error, fetchData } = useFetchWithCallbacks<string>('https://jsonplaceholder.typicode.com/users/1');
+  const [firstResponse, setFirstResponse] = useState<string | null>(null);
+  const [secondResponse, setSecondResponse] = useState<string | null>(null);
+
+  const handleSuccess = (data?: string) => {
+    setFirstResponse(data ?? null);
+    fetchData({ endpoint: 'https://jsonplaceholder.typicode.com/posts/1', onSuccess: (data?: string) => {
+      setSecondResponse(data ?? null);
+    }});
+  };
+
+  const handleFetch = () => {
+    setFirstResponse(null);
+    setSecondResponse(null);
+    fetchData({ onSuccess: handleSuccess });
+  };
+
+  return (
+    <>
+      <button onClick={handleFetch}>Load Data</button>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+
+      {firstResponse && (
+        <>
+          <hr />
+          <div>1st response</div>
+          <pre>{JSON.stringify(firstResponse, null, 2)}</pre>
+        </>
+      )}
+
+      {secondResponse && (
+        <>
+          <hr />
+          <div>2nd response</div>
+          <pre>{JSON.stringify(secondResponse, null, 2)}</pre>
+        </>
+      )}
+    </>
+  );
+}
 ```
 
 ## � API Reference
@@ -310,11 +373,9 @@ const { fetchData } = useFetchWithCallbacks<User>('/users/1');
 
 fetchData(
   data => {
-    // Success callback
     console.log('Success:', data);
   },
   error => {
-    // Error callback - handles network errors, timeouts, HTTP errors
     if (error.message === 'Request timeout') {
       console.log('Request timed out');
     } else if (error.message.includes('404')) {
@@ -358,8 +419,6 @@ interface User {
 // T is automatically inferred as User
 const { response, fetchData } = useFetchWithCallbacks<User>('/users/1');
 
-// response is typed as User | null
-// fetchData callbacks receive properly typed data
 ```
 
 ## 📄 License

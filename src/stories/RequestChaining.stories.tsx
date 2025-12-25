@@ -35,21 +35,21 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
       .fetch({
         endpoint: '/users/1',
         onSuccess: user => {
-          addLog(`✅ Step 1: Fetched user ${user.name}`);
+          addLog(`✅ Step 1: Fetched user ${user?.name}`);
         },
       })
       .post({
         endpoint: '/posts',
         data: { title: 'New Post', body: 'Hello world', userId: 1 },
         onSuccess: post => {
-          addLog(`✅ Step 2: Created post with id ${post.id}`);
+          addLog(`✅ Step 2: Created post with id ${post?.id}`);
         },
       })
       .put({
         endpoint: '/users/1',
         data: { name: 'Final Name', email: 'final@example.com', id: 1 },
         onSuccess: final => {
-          addLog(`✅ Step 3: Put final update for ${final.name}`);
+          addLog(`✅ Step 3: Put final update for ${final?.name}`);
         },
       })
       .then(() => {
@@ -73,21 +73,21 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
       .fetch({
         endpoint: '/users/2',
         onSuccess: user => {
-          addLog(`✅ Step 1: Fetched user ${user.name}`);
+          addLog(`✅ Step 1: Fetched user ${user?.name}`);
         },
       })
       .patch({
         endpoint: '/users/2',
         data: { email: 'patched@example.com' },
         onSuccess: patched => {
-          addLog(`✅ Step 2: Patched email to ${patched.email}`);
+          addLog(`✅ Step 2: Patched email to ${patched?.email}`);
         },
       })
       .put({
         endpoint: '/users/2',
         data: { name: 'Chain User', email: 'chain@example.com', id: 2 },
         onSuccess: updated => {
-          addLog(`✅ Step 3: Full update to ${updated.name}`);
+          addLog(`✅ Step 3: Full update to ${updated?.name}`);
         },
       })
       .delete({

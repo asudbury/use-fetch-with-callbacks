@@ -232,15 +232,15 @@ interface UseFetchOptions {
 
 ```typescript
 interface ChainableRequest<T> {
-  fetch: (...) => ChainableRequest<T>;    // Add GET request to chain
-  post: (...) => ChainableRequest<T>;     // Add POST request to chain
-  put: (...) => ChainableRequest<T>;      // Add PUT request to chain
-  delete: (...) => ChainableRequest<T>;   // Add DELETE request to chain
-  patch: (...) => ChainableRequest<T>;    // Add PATCH request to chain
-  then: (callback) => ChainableRequest<T>; // Success callback
-  catch: (callback) => ChainableRequest<T>; // Error callback
-  finally: (callback) => ChainableRequest<T>; // Cleanup callback
-  execute: () => Promise<void>;           // Execute the chain
+  fetch: (...) => ChainableRequest<T>;
+  post: (...) => ChainableRequest<T>;
+  put: (...) => ChainableRequest<T>;
+  delete: (...) => ChainableRequest<T>;
+  patch: (...) => ChainableRequest<T>;
+  then: (callback) => ChainableRequest<T>;
+  catch: (callback) => ChainableRequest<T>;
+  finally: (callback) => ChainableRequest<T>;
+  execute: () => Promise<void>;
 }
 ```
 
@@ -253,11 +253,9 @@ const { fetchData } = useFetchWithCallbacks<User>('/users/1');
 
 fetchData(
   data => {
-    // Success callback
     console.log('Success:', data);
   },
   error => {
-    // Error callback - handles network errors, timeouts, HTTP errors
     if (error.message === 'Request timeout') {
       console.log('Request timed out');
     } else if (error.message.includes('404')) {
@@ -301,8 +299,6 @@ interface User {
 // T is automatically inferred as User
 const { response, fetchData } = useFetchWithCallbacks<User>('/users/1');
 
-// response is typed as User | null
-// fetchData callbacks receive properly typed data
 ```
 
 ## 📄 License

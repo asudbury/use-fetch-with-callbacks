@@ -26,7 +26,7 @@ export type UseFetchOptions = {
 export type RequestParams<T> = {
   endpoint?: string;
   data?: unknown;
-  onSuccess?: (data: T) => void;
+  onSuccess?: (data?: T) => void;
   onError?: (error: Error) => void;
   onLoading?: (loading: boolean) => void;
 };
@@ -89,7 +89,7 @@ export interface ChainableRequest<T> {
    * @param callback - Function to execute on success, receives the final response data.
    * @returns The chainable request object for further chaining.
    */
-  then: (callback: (data: T) => void) => ChainableRequest<T>;
+  then: (callback: (data?: T) => void) => ChainableRequest<T>;
 
   /**
    * Adds an error callback to be executed if any operation fails.

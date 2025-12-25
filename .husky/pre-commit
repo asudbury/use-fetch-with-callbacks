@@ -1,4 +1,5 @@
 # Format and lint code before committing
+npm run test
 npx prettier --write "src/**/*.{ts,tsx}" "docs/**/*.md"
 npx eslint src --ext .ts,.tsx --fix
 git add -u
