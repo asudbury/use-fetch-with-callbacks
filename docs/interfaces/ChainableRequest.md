@@ -1,6 +1,6 @@
 [**use-fetch-with-callbacks**](../README.md)
 
-***
+---
 
 [use-fetch-with-callbacks](../globals.md) / ChainableRequest
 
@@ -38,7 +38,7 @@ Function to execute on error
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### delete()
 
@@ -60,7 +60,7 @@ Request parameters (endpoint, callbacks, etc)
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### execute()
 
@@ -76,7 +76,7 @@ Executes the chained operations sequentially
 
 Promise that resolves when all operations complete
 
-***
+---
 
 ### fetch()
 
@@ -98,7 +98,7 @@ Request parameters (endpoint, callbacks, etc)
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### finally()
 
@@ -120,7 +120,7 @@ Function to execute finally
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### patch()
 
@@ -142,7 +142,7 @@ Request parameters (endpoint, data, callbacks, etc)
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### post()
 
@@ -164,7 +164,7 @@ Request parameters (endpoint, data, callbacks, etc)
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### put()
 
@@ -186,7 +186,7 @@ Request parameters (endpoint, data, callbacks, etc)
 
 `ChainableRequest`\<`T`\>
 
-***
+---
 
 ### then()
 

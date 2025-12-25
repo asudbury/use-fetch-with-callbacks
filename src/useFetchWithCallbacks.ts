@@ -1,5 +1,10 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
-import type { UseFetchOptions, RequestParams, ChainableRequest, FetchResult } from './types';
+import type {
+  UseFetchOptions,
+  RequestParams,
+  ChainableRequest,
+  FetchResult,
+} from './types';
 
 /**
  * A React hook that provides fetch functionality with callback support for success, error, and loading states
@@ -52,7 +57,6 @@ const useFetchWithCallbacks = <T>(
     }),
     [options?.headers]
   );
-
 
   /**
    * Executes a single API request and manages loading, error, and success states.
@@ -217,7 +221,10 @@ const useFetchWithCallbacks = <T>(
         headers,
         signal: abortSignal,
       };
-      if (params?.data && (method === 'POST' || method === 'PUT' || method === 'PATCH')) {
+      if (
+        params?.data &&
+        (method === 'POST' || method === 'PUT' || method === 'PATCH')
+      ) {
         fetchOptions.body = JSON.stringify(params.data);
       }
       const res = await Promise.race([
@@ -256,7 +263,8 @@ const useFetchWithCallbacks = <T>(
   const fetchData = useCallback(
     (params?: RequestParams<T>) =>
       executeRequest(
-        (abortSignal: AbortSignal) => requestWithMethod('GET', params, abortSignal),
+        (abortSignal: AbortSignal) =>
+          requestWithMethod('GET', params, abortSignal),
         params?.onSuccess,
         params?.onError,
         params?.onLoading
@@ -278,7 +286,8 @@ const useFetchWithCallbacks = <T>(
   const postData = useCallback(
     (params: RequestParams<T>) =>
       executeRequest(
-        (abortSignal: AbortSignal) => requestWithMethod('POST', params, abortSignal),
+        (abortSignal: AbortSignal) =>
+          requestWithMethod('POST', params, abortSignal),
         params.onSuccess,
         params.onError,
         params.onLoading
@@ -300,7 +309,8 @@ const useFetchWithCallbacks = <T>(
   const putData = useCallback(
     (params: RequestParams<T>) =>
       executeRequest(
-        (abortSignal: AbortSignal) => requestWithMethod('PUT', params, abortSignal),
+        (abortSignal: AbortSignal) =>
+          requestWithMethod('PUT', params, abortSignal),
         params.onSuccess,
         params.onError,
         params.onLoading
@@ -321,7 +331,8 @@ const useFetchWithCallbacks = <T>(
   const deleteData = useCallback(
     (params?: RequestParams<T>) =>
       executeRequest(
-        (abortSignal: AbortSignal) => requestWithMethod('DELETE', params, abortSignal),
+        (abortSignal: AbortSignal) =>
+          requestWithMethod('DELETE', params, abortSignal),
         params?.onSuccess,
         params?.onError,
         params?.onLoading
@@ -343,7 +354,8 @@ const useFetchWithCallbacks = <T>(
   const patchData = useCallback(
     (params: RequestParams<T>) =>
       executeRequest(
-        (abortSignal: AbortSignal) => requestWithMethod('PATCH', params, abortSignal),
+        (abortSignal: AbortSignal) =>
+          requestWithMethod('PATCH', params, abortSignal),
         params.onSuccess,
         params.onError,
         params.onLoading
@@ -433,7 +445,7 @@ const useFetchWithCallbacks = <T>(
 
     const chainRequestWithMethod = (
       method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
-      params?: RequestParams<T>,
+      params?: RequestParams<T>
     ) => {
       return executeRequest(
         (abortSignal: AbortSignal) =>

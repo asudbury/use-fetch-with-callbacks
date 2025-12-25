@@ -19,7 +19,7 @@ A powerful React hook for HTTP requests with comprehensive callback support, req
 npm install use-fetch-with-callbacks
 ```
 
-## � Interactive Documentation
+## 📚 Interactive Documentation
 
 Explore live examples and comprehensive documentation in our **Storybook**:
 
@@ -34,7 +34,7 @@ npm install
 npm run storybook
 ```
 
-## �📋 Requirements
+## 📋 Requirements
 
 - React 18.0.0 or higher
 - TypeScript 4.0+ (for TypeScript projects)
@@ -107,18 +107,32 @@ const UserWorkflow = () => {
   const handleWorkflow = async () => {
     // Execute a complex workflow with different endpoints
     await chain()
-      .fetch({ endpoint: '/users/1', onSuccess: user => {
-        console.log('1. Fetched user:', user);
-      }})
-      .patch({ endpoint: '/users/1', data: { lastLogin: new Date() }, onSuccess: updated => {
-        console.log('2. Updated login time:', updated);
-      }})
-      .put({ endpoint: '/users/1', data: { status: 'active' }, onSuccess: activated => {
-        console.log('3. Activated user:', activated);
-      }})
-      .delete({ endpoint: '/users/1', onSuccess: deleted => {
-        console.log('4. Cleaned up:', deleted);
-      }})
+      .fetch({
+        endpoint: '/users/1',
+        onSuccess: user => {
+          console.log('1. Fetched user:', user);
+        },
+      })
+      .patch({
+        endpoint: '/users/1',
+        data: { lastLogin: new Date() },
+        onSuccess: updated => {
+          console.log('2. Updated login time:', updated);
+        },
+      })
+      .put({
+        endpoint: '/users/1',
+        data: { status: 'active' },
+        onSuccess: activated => {
+          console.log('3. Activated user:', activated);
+        },
+      })
+      .delete({
+        endpoint: '/users/1',
+        onSuccess: deleted => {
+          console.log('4. Cleaned up:', deleted);
+        },
+      })
       .then(finalResult => {
         console.log('✅ Workflow completed:', finalResult);
       })
@@ -200,7 +214,7 @@ interface FetchResult<T> {
   deleteData: (...) => Promise<void>;
   patchData: (...) => Promise<void>;
   fetchMultipleData: (...) => Promise<void>;
-  chain: () => ChainableRequest<T>;     
+  chain: () => ChainableRequest<T>;
 }
 ```
 
@@ -297,7 +311,7 @@ MIT
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please read our [Contributing Guide](../CONTRIBUTING.md) to learn about our development process, coding standards, and how to submit pull requests.
 
 ## 📞 Support
 

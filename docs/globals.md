@@ -1,6 +1,6 @@
 [**use-fetch-with-callbacks**](README.md)
 
-***
+---
 
 # use-fetch-with-callbacks
 

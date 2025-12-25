@@ -1,6 +1,6 @@
 [**use-fetch-with-callbacks**](../README.md)
 
-***
+---
 
 [use-fetch-with-callbacks](../globals.md) / useFetchWithCallbacks
 
@@ -43,33 +43,38 @@ An object containing response data, loading state, error state, and request meth
 ## Examples
 
 Basic usage:
+
 ```typescript
-const { response, loading, error, fetchData } = useFetchWithCallbacks<User>('/users/1', {
-  baseUrl: 'https://api.example.com',
-  headers: { 'Authorization': 'Bearer token' }
-});
+const { response, loading, error, fetchData } = useFetchWithCallbacks<User>(
+  '/users/1',
+  {
+    baseUrl: 'https://api.example.com',
+    headers: { Authorization: 'Bearer token' },
+  }
+);
 
 // Fetch data with callbacks
 fetchData(
-  (data) => console.log('Success:', data),
-  (error) => console.error('Error:', error),
-  (loading) => console.log('Loading:', loading)
+  data => console.log('Success:', data),
+  error => console.error('Error:', error),
+  loading => console.log('Loading:', loading)
 );
 ```
 
 Chaining operations with multiple endpoints:
+
 ```typescript
 const { chain } = useFetchWithCallbacks<User>('/users/1', {
-  baseUrl: 'https://api.example.com'
+  baseUrl: 'https://api.example.com',
 });
 
 // Chain multiple operations to different endpoints
 chain()
-  .fetch('/users/1', (data) => console.log('Fetched user 1:', data))
-  .post('/users', { name: 'John' }, (data) => console.log('Posted:', data))
-  .put('/users/2', { name: 'Jane' }, (data) => console.log('Updated:', data))
-  .then((finalData) => console.log('All operations completed:', finalData))
-  .catch((error) => console.error('Chain failed:', error))
+  .fetch('/users/1', data => console.log('Fetched user 1:', data))
+  .post('/users', { name: 'John' }, data => console.log('Posted:', data))
+  .put('/users/2', { name: 'Jane' }, data => console.log('Updated:', data))
+  .then(finalData => console.log('All operations completed:', finalData))
+  .catch(error => console.error('Chain failed:', error))
   .finally(() => console.log('Chain finished'))
   .execute();
 ```

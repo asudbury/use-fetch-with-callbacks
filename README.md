@@ -19,7 +19,7 @@ A powerful React hook for HTTP requests with comprehensive callback support, req
 npm install use-fetch-with-callbacks
 ```
 
-## � Interactive Documentation
+## 📚 Interactive Documentation
 
 Explore live examples and comprehensive documentation in our **Storybook**:
 
@@ -34,7 +34,7 @@ npm install
 npm run storybook
 ```
 
-## �📋 Requirements
+## 📋 Requirements
 
 - React 18.0.0 or higher
 - TypeScript 4.0+ (for TypeScript projects)
@@ -369,7 +369,7 @@ MIT © Adrian Sudbury
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a [Pull Request](https://github.com/asudbury/use-fetch-with-callbacks/pulls).
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) to learn about our development process, coding standards, and how to submit pull requests.
 
 - [Open a Pull Request](https://github.com/asudbury/use-fetch-with-callbacks/pulls)
 - [View All Issues](https://github.com/asudbury/use-fetch-with-callbacks/issues)

@@ -243,7 +243,9 @@ describe('useFetchWithCallbacks', () => {
       .mockResolvedValueOnce({ ok: true, json: async () => mockData2 });
     const { result } = renderHook(() => useFetchWithCallbacks<any>('test'));
     await act(async () => {
-      await result.current.fetchMultipleData({ endpoints: ['/endpoint1', '/endpoint2'] });
+      await result.current.fetchMultipleData({
+        endpoints: ['/endpoint1', '/endpoint2'],
+      });
     });
     expect(result.current.response).toEqual([mockData1, mockData2]); // If this still fails, check hook implementation
   });

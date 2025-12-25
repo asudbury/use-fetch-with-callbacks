@@ -1,6 +1,6 @@
 [**use-fetch-with-callbacks**](../README.md)
 
-***
+---
 
 [use-fetch-with-callbacks](../globals.md) / UseFetchOptions
 
@@ -22,7 +22,7 @@ Defined in: [useFetchWithCallbacks.ts:11](https://github.com/asudbury/use-fetch-
 
 An optional base URL to prepend to all fetch requests.
 
-***
+---
 
 ### headers?
 
@@ -32,7 +32,7 @@ Defined in: [useFetchWithCallbacks.ts:12](https://github.com/asudbury/use-fetch-
 
 Optional HTTP headers to include with each request. Can be a plain object or a `Headers` instance.
 
-***
+---
 
 ### timeout?
 
