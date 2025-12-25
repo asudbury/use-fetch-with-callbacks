@@ -1,6 +1,6 @@
 [**use-fetch-with-callbacks**](../README.md)
 
-***
+---
 
 [use-fetch-with-callbacks](../globals.md) / FetchResult
 
@@ -34,7 +34,7 @@ Provides a chainable interface for sequential operations
 
 A chainable object with then, catch, and finally methods
 
-***
+---
 
 ### deleteData()
 
@@ -58,7 +58,7 @@ Request parameters (callbacks, etc)
 
 Promise that resolves when the request completes
 
-***
+---
 
 ### error
 
@@ -68,7 +68,7 @@ Defined in: [useFetchWithCallbacks.ts:100](https://github.com/asudbury/use-fetch
 
 Any error that occurred during the request, null if no error
 
-***
+---
 
 ### fetchData()
 
@@ -92,7 +92,7 @@ Request parameters (callbacks, etc)
 
 Promise that resolves when the request completes
 
-***
+---
 
 ### fetchMultipleData()
 
@@ -130,7 +130,7 @@ Object containing endpoints and optional callbacks
 
 Promise that resolves when all requests complete
 
-***
+---
 
 ### loading
 
@@ -140,7 +140,7 @@ Defined in: [useFetchWithCallbacks.ts:98](https://github.com/asudbury/use-fetch-
 
 Whether a request is currently in progress
 
-***
+---
 
 ### patchData()
 
@@ -164,7 +164,7 @@ Request parameters (data, callbacks, etc)
 
 Promise that resolves when the request completes
 
-***
+---
 
 ### postData()
 
@@ -188,7 +188,7 @@ Request parameters (data, callbacks, etc)
 
 Promise that resolves when the request completes
 
-***
+---
 
 ### putData()
 
@@ -212,7 +212,7 @@ Request parameters (data, callbacks, etc)
 
 Promise that resolves when the request completes
 
-***
+---
 
 ### requestCompleted
 
@@ -222,7 +222,7 @@ Defined in: [useFetchWithCallbacks.ts:102](https://github.com/asudbury/use-fetch
 
 Whether at least one request has been completed (successfully or with error)
 
-***
+---
 
 ### response
 

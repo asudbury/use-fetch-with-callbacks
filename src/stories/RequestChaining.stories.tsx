@@ -32,15 +32,26 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
     clearLogs();
 
     await chain()
-      .fetch({ endpoint: '/users/1', onSuccess: user => {
-        addLog(`✅ Step 1: Fetched user ${user.name}`);
-      }})
-      .post({ endpoint: '/posts', data: { title: 'New Post', body: 'Hello world', userId: 1 }, onSuccess: post => {
-        addLog(`✅ Step 2: Created post with id ${post.id}`);
-      }})
-      .put({ endpoint: '/users/1', data: { name: 'Final Name', email: 'final@example.com', id: 1 }, onSuccess: final => {
-        addLog(`✅ Step 3: Put final update for ${final.name}`);
-      }})
+      .fetch({
+        endpoint: '/users/1',
+        onSuccess: user => {
+          addLog(`✅ Step 1: Fetched user ${user.name}`);
+        },
+      })
+      .post({
+        endpoint: '/posts',
+        data: { title: 'New Post', body: 'Hello world', userId: 1 },
+        onSuccess: post => {
+          addLog(`✅ Step 2: Created post with id ${post.id}`);
+        },
+      })
+      .put({
+        endpoint: '/users/1',
+        data: { name: 'Final Name', email: 'final@example.com', id: 1 },
+        onSuccess: final => {
+          addLog(`✅ Step 3: Put final update for ${final.name}`);
+        },
+      })
       .then(() => {
         addLog(`🎉 Chain completed successfully with final result!`);
       })
@@ -59,18 +70,32 @@ const ChainExample = ({ baseUrl = 'https://jsonplaceholder.typicode.com' }) => {
     clearLogs();
 
     await chain()
-      .fetch({ endpoint: '/users/2', onSuccess: user => {
-        addLog(`✅ Step 1: Fetched user ${user.name}`);
-      }})
-      .patch({ endpoint: '/users/2', data: { email: 'patched@example.com' }, onSuccess: patched => {
-        addLog(`✅ Step 2: Patched email to ${patched.email}`);
-      }})
-      .put({ endpoint: '/users/2', data: { name: 'Chain User', email: 'chain@example.com', id: 2 }, onSuccess: updated => {
-        addLog(`✅ Step 3: Full update to ${updated.name}`);
-      }})
-      .delete({ endpoint: '/users/2', onSuccess: () => {
-        addLog(`✅ Step 4: Cleanup completed`);
-      }})
+      .fetch({
+        endpoint: '/users/2',
+        onSuccess: user => {
+          addLog(`✅ Step 1: Fetched user ${user.name}`);
+        },
+      })
+      .patch({
+        endpoint: '/users/2',
+        data: { email: 'patched@example.com' },
+        onSuccess: patched => {
+          addLog(`✅ Step 2: Patched email to ${patched.email}`);
+        },
+      })
+      .put({
+        endpoint: '/users/2',
+        data: { name: 'Chain User', email: 'chain@example.com', id: 2 },
+        onSuccess: updated => {
+          addLog(`✅ Step 3: Full update to ${updated.name}`);
+        },
+      })
+      .delete({
+        endpoint: '/users/2',
+        onSuccess: () => {
+          addLog(`✅ Step 4: Cleanup completed`);
+        },
+      })
       .then(() => {
         addLog(`🎉 Complex chain completed!`);
       })
@@ -182,22 +207,22 @@ const meta: Meta<typeof ChainExample> = {
     docs: {
       description: {
         story:
-          'Advanced request chaining example showing sequential HTTP operations with comprehensive error handling.\n\n'
-          + 'You can chain requests to different endpoints in a single chain. Each chainable method (`fetch`, `post`, `put`, `patch`, `delete`) accepts an optional endpoint and per-request callbacks.\n\n'
-          + 'Example usage:\n'
-          + '```tsx\n'
-          + 'chain()\n'
-          + '  .fetch({ endpoint: "/users/1", onSuccess: user => { /* ... */ } })\n'
-          + '  .put({ endpoint: "/users/1", data: { name: "New Name" }, onSuccess: updated => { /* ... */ } })\n'
-          + '  .then(user => { /* Called after last successful request */ })\n'
-          + '  .catch(error => { /* Called if any request fails */ })\n'
-          + '  .finally(() => { /* Always called at the end */ })\n'
-          + '  .execute();\n'
-          + '```\n\n'
-          + '- Each step can have its own `onSuccess`, `onError`, and `onLoading` callbacks.\n'
-          + '- `.then()` is called after all steps succeed.\n'
-          + '- `.catch()` is called if any step fails.\n'
-          + '- `.finally()` is always called at the end.'
+          'Advanced request chaining example showing sequential HTTP operations with comprehensive error handling.\n\n' +
+          'You can chain requests to different endpoints in a single chain. Each chainable method (`fetch`, `post`, `put`, `patch`, `delete`) accepts an optional endpoint and per-request callbacks.\n\n' +
+          'Example usage:\n' +
+          '```tsx\n' +
+          'chain()\n' +
+          '  .fetch({ endpoint: "/users/1", onSuccess: user => { /* ... */ } })\n' +
+          '  .put({ endpoint: "/users/1", data: { name: "New Name" }, onSuccess: updated => { /* ... */ } })\n' +
+          '  .then(user => { /* Called after last successful request */ })\n' +
+          '  .catch(error => { /* Called if any request fails */ })\n' +
+          '  .finally(() => { /* Always called at the end */ })\n' +
+          '  .execute();\n' +
+          '```\n\n' +
+          '- Each step can have its own `onSuccess`, `onError`, and `onLoading` callbacks.\n' +
+          '- `.then()` is called after all steps succeed.\n' +
+          '- `.catch()` is called if any step fails.\n' +
+          '- `.finally()` is always called at the end.',
       },
     },
   },

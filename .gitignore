@@ -86,6 +86,7 @@ public
 # Storybook build outputs
 .out
 .storybook-out
+storybook-static
 
 # Temporary folders
 tmp/
