@@ -1,3 +1,5 @@
+<img src="./public/hero-image.png" >
+
 # useFetchWithCallbacks
 
 A powerful React hook for HTTP requests with comprehensive callback support, request chaining, and TypeScript integration.
@@ -8,12 +10,6 @@ A powerful React hook for HTTP requests with comprehensive callback support, req
 > **Explore the full documentation, architecture, and deep technical notes for this project on DeepWiki:**
 >
 > [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/asudbury/use-fetch-with-callbacks)
->
-> - Comprehensive guides, diagrams, and design decisions
-> - Contributor onboarding and advanced usage tips
-> - Maintainer notes, troubleshooting, and best practices
->
-> **This is the canonical knowledge base for the project. If you're contributing, maintaining, or deploying, start here!**
 
 ## ✨ Features
 
