@@ -40,7 +40,7 @@ import type {
 
 const useFetchWithCallbacks = <T>(
   endpoint: string,
-  options?: UseFetchOptions,
+  options?: UseFetchOptions
 ): FetchResult<T> => {
   const [response, setResponse] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -55,7 +55,7 @@ const useFetchWithCallbacks = <T>(
       'Content-Type': 'application/json',
       ...options?.headers,
     }),
-    [options?.headers],
+    [options?.headers]
   );
   /**
    * Sets the loading state and calls the onLoading callback if provided.
@@ -65,7 +65,7 @@ const useFetchWithCallbacks = <T>(
    */
   const setLoadingState = (
     isLoading: boolean,
-    onLoading?: (loading: boolean) => void,
+    onLoading?: (loading: boolean) => void
   ) => {
     setLoading(isLoading);
     if (onLoading) {
@@ -87,7 +87,7 @@ const useFetchWithCallbacks = <T>(
       fetchFn: (abortSignal: AbortSignal) => Promise<T>,
       onSuccess?: (data?: T) => void,
       onError?: (err: Error) => void,
-      onLoading?: (isLoading: boolean) => void,
+      onLoading?: (isLoading: boolean) => void
     ) => {
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
@@ -128,7 +128,7 @@ const useFetchWithCallbacks = <T>(
         }
       }
     },
-    [],
+    []
   );
 
   /**
@@ -145,7 +145,7 @@ const useFetchWithCallbacks = <T>(
       fetchFn: (abortSignal: AbortSignal) => Promise<unknown[]>,
       onSuccess?: (data: unknown[]) => void,
       onError?: (err: Error) => void,
-      onLoading?: (isLoading: boolean) => void,
+      onLoading?: (isLoading: boolean) => void
     ) => {
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
@@ -186,17 +186,20 @@ const useFetchWithCallbacks = <T>(
         }
       }
     },
-    [],
+    []
   );
 
   /**
    * Cleans up any ongoing requests when the component unmounts.
    */
-  useEffect(() => () => {
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
-  }, []);
+  useEffect(
+    () => () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    },
+    []
+  );
 
   /**
    * Performs a fetch request with the specified HTTP method and parameters.
@@ -210,7 +213,7 @@ const useFetchWithCallbacks = <T>(
     async (
       method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
       params?: RequestParams<T>,
-      abortSignal?: AbortSignal,
+      abortSignal?: AbortSignal
     ): Promise<T> => {
       const url = `${baseUrl}${params?.endpoint ?? endpoint}`;
       const fetchOptions: Record<string, unknown> = {
@@ -239,7 +242,7 @@ const useFetchWithCallbacks = <T>(
       const json = await res.json();
       return json as T;
     },
-    [baseUrl, endpoint, headers, timeout],
+    [baseUrl, endpoint, headers, timeout]
   );
 
   /**
@@ -253,14 +256,15 @@ const useFetchWithCallbacks = <T>(
    * @returns void
    */
   const fetchData = useCallback(
-    (params?: RequestParams<T>) => executeRequest(
-      (abortSignal: AbortSignal) =>
+    (params?: RequestParams<T>) =>
+      executeRequest(
+        (abortSignal: AbortSignal) =>
           requestWithMethod('GET', params, abortSignal),
-      params?.onSuccess,
-      params?.onError,
-      params?.onLoading,
-    ),
-    [executeRequest, requestWithMethod],
+        params?.onSuccess,
+        params?.onError,
+        params?.onLoading
+      ),
+    [executeRequest, requestWithMethod]
   );
 
   /**
@@ -275,14 +279,15 @@ const useFetchWithCallbacks = <T>(
    * @returns void
    */
   const postData = useCallback(
-    (params: RequestParams<T>) => executeRequest(
-      (abortSignal: AbortSignal) =>
+    (params: RequestParams<T>) =>
+      executeRequest(
+        (abortSignal: AbortSignal) =>
           requestWithMethod('POST', params, abortSignal),
-      params.onSuccess,
-      params.onError,
-      params.onLoading,
-    ),
-    [executeRequest, requestWithMethod],
+        params.onSuccess,
+        params.onError,
+        params.onLoading
+      ),
+    [executeRequest, requestWithMethod]
   );
 
   /**
@@ -297,14 +302,15 @@ const useFetchWithCallbacks = <T>(
    * @returns void
    */
   const putData = useCallback(
-    (params: RequestParams<T>) => executeRequest(
-      (abortSignal: AbortSignal) =>
+    (params: RequestParams<T>) =>
+      executeRequest(
+        (abortSignal: AbortSignal) =>
           requestWithMethod('PUT', params, abortSignal),
-      params.onSuccess,
-      params.onError,
-      params.onLoading,
-    ),
-    [executeRequest, requestWithMethod],
+        params.onSuccess,
+        params.onError,
+        params.onLoading
+      ),
+    [executeRequest, requestWithMethod]
   );
 
   /**
@@ -318,14 +324,15 @@ const useFetchWithCallbacks = <T>(
    * @returns void
    */
   const deleteData = useCallback(
-    (params?: RequestParams<T>) => executeRequest(
-      (abortSignal: AbortSignal) =>
+    (params?: RequestParams<T>) =>
+      executeRequest(
+        (abortSignal: AbortSignal) =>
           requestWithMethod('DELETE', params, abortSignal),
-      params?.onSuccess,
-      params?.onError,
-      params?.onLoading,
-    ),
-    [executeRequest, requestWithMethod],
+        params?.onSuccess,
+        params?.onError,
+        params?.onLoading
+      ),
+    [executeRequest, requestWithMethod]
   );
 
   /**
@@ -340,14 +347,15 @@ const useFetchWithCallbacks = <T>(
    * @returns void
    */
   const patchData = useCallback(
-    (params: RequestParams<T>) => executeRequest(
-      (abortSignal: AbortSignal) =>
+    (params: RequestParams<T>) =>
+      executeRequest(
+        (abortSignal: AbortSignal) =>
           requestWithMethod('PATCH', params, abortSignal),
-      params.onSuccess,
-      params.onError,
-      params.onLoading,
-    ),
-    [executeRequest, requestWithMethod],
+        params.onSuccess,
+        params.onError,
+        params.onLoading
+      ),
+    [executeRequest, requestWithMethod]
   );
 
   /**
@@ -366,33 +374,37 @@ const useFetchWithCallbacks = <T>(
       onSuccess?: (data: unknown[]) => void;
       onError?: (err: Error) => void;
       onLoading?: (isLoading: boolean) => void;
-    }) => executeMultipleRequest(
-      async (abortSignal: AbortSignal) => {
-        const promises = params.endpoints.map(async (ep) => {
-          const url = `${baseUrl}${ep}`;
-          const res = await withTimeout(fetch(url, { method: 'GET', headers, signal: abortSignal }), timeout);
+    }) =>
+      executeMultipleRequest(
+        async (abortSignal: AbortSignal) => {
+          const promises = params.endpoints.map(async ep => {
+            const url = `${baseUrl}${ep}`;
+            const res = await withTimeout(
+              fetch(url, { method: 'GET', headers, signal: abortSignal }),
+              timeout
+            );
 
-          if (!res.ok) {
-            const errorText = await res.text();
-            let errorMessage = 'An error occurred';
-            try {
-              const errorJson = JSON.parse(errorText);
-              errorMessage = errorJson.message || errorMessage;
-            } catch {
-              errorMessage = errorText || errorMessage;
+            if (!res.ok) {
+              const errorText = await res.text();
+              let errorMessage = 'An error occurred';
+              try {
+                const errorJson = JSON.parse(errorText);
+                errorMessage = errorJson.message || errorMessage;
+              } catch {
+                errorMessage = errorText || errorMessage;
+              }
+              throw new Error(errorMessage);
             }
-            throw new Error(errorMessage);
-          }
 
-          return res.json();
-        });
-        return Promise.all(promises);
-      },
-      params.onSuccess,
-      params.onError,
-      params.onLoading,
-    ),
-    [baseUrl, headers, executeMultipleRequest, timeout],
+            return res.json();
+          });
+          return Promise.all(promises);
+        },
+        params.onSuccess,
+        params.onError,
+        params.onLoading
+      ),
+    [baseUrl, headers, executeMultipleRequest, timeout]
   );
 
   /**
@@ -433,12 +445,14 @@ const useFetchWithCallbacks = <T>(
     const chainRequestWithMethod = (
       method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
       params?: RequestParams<T>
-    ) => executeRequest(
-      (abortSignal: AbortSignal) => requestWithMethod(method, params, abortSignal),
-      params?.onSuccess,
-      params?.onError,
-      params?.onLoading,
-    );
+    ) =>
+      executeRequest(
+        (abortSignal: AbortSignal) =>
+          requestWithMethod(method, params, abortSignal),
+        params?.onSuccess,
+        params?.onError,
+        params?.onLoading
+      );
 
     const chainableRequest: ChainableRequest<T> = {
       fetch: (params?: RequestParams<T>) => {
@@ -511,15 +525,18 @@ const useFetchWithCallbacks = <T>(
       execute: async () => {
         let lastResult: T | null = null;
         const chainPromise = operations.reduce(
-          (promise, operation) => promise.then(() => chainRequestWithMethod(operation.type, operation).then((result) => {
-            if (result !== undefined) {
-              lastResult = result as T;
-              if (operation.onSuccess && lastResult !== null) {
-                operation.onSuccess(lastResult);
-              }
-            }
-          })),
-          Promise.resolve(),
+          (promise, operation) =>
+            promise.then(() =>
+              chainRequestWithMethod(operation.type, operation).then(result => {
+                if (result !== undefined) {
+                  lastResult = result as T;
+                  if (operation.onSuccess && lastResult !== null) {
+                    operation.onSuccess(lastResult);
+                  }
+                }
+              })
+            ),
+          Promise.resolve()
         );
 
         await chainPromise
@@ -528,7 +545,7 @@ const useFetchWithCallbacks = <T>(
               finalSuccessCallback(lastResult);
             }
           })
-          .catch((err) => {
+          .catch(err => {
             if (finalErrorCallback) {
               finalErrorCallback(err as Error);
             }
@@ -544,24 +561,24 @@ const useFetchWithCallbacks = <T>(
 
     return chainableRequest;
   }, [executeRequest, requestWithMethod]);
-// Helper for timeout logic
-/**
- * Helper for timeout logic. Use outside the hook to avoid useCallback dependency issues.
- */
-function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
-  return new Promise<T>((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error('Request timeout')), ms);
-    promise
-      .then((val) => {
-        clearTimeout(timer);
-        resolve(val);
-      })
-      .catch((err) => {
-        clearTimeout(timer);
-        reject(err);
-      });
-  });
-}
+  // Helper for timeout logic
+  /**
+   * Helper for timeout logic. Use outside the hook to avoid useCallback dependency issues.
+   */
+  function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+    return new Promise<T>((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('Request timeout')), ms);
+      promise
+        .then(val => {
+          clearTimeout(timer);
+          resolve(val);
+        })
+        .catch(err => {
+          clearTimeout(timer);
+          reject(err);
+        });
+    });
+  }
 
   /**
    * Hook return value: provides API response, loading/error states, and request methods.

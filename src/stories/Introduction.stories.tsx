@@ -596,45 +596,46 @@ const IntroductionComponent = () => {
           >
             <div
               style={{
-          width: '48px',
-          height: '48px',
-          borderRadius: '50%',
-          backgroundColor: '#1cd2d8',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: '15px',
-          boxShadow: '0 4px 12px rgba(240, 147, 251, 0.3)',
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                backgroundColor: '#1cd2d8',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: '15px',
+                boxShadow: '0 4px 12px rgba(240, 147, 251, 0.3)',
               }}
             >
               <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
               >
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
               </svg>
             </div>
             <h3
               style={{
-          margin: 0,
-          color: '#2d3748',
-          fontSize: '20px',
-          fontWeight: '600',
+                margin: 0,
+                color: '#2d3748',
+                fontSize: '20px',
+                fontWeight: '600',
               }}
             >
               Callbacks
             </h3>
           </div>
           <p style={{ margin: 0, color: '#4a5568', lineHeight: '1.6' }}>
-            Success, error, and loading callbacks for full control over request lifecycle.
+            Success, error, and loading callbacks for full control over request
+            lifecycle.
           </p>
         </div>
-                <div
+        <div
           style={{
             padding: '25px',
             backgroundColor: '#ffffff',
@@ -654,35 +655,35 @@ const IntroductionComponent = () => {
           >
             <div
               style={{
-          width: '48px',
-          height: '48px',
-          borderRadius: '50%',
-          backgroundColor: '#48bb78',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: '15px',
-          boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                backgroundColor: '#48bb78',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: '15px',
+                boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
               }}
             >
               <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
               >
-          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
               </svg>
             </div>
             <h3
               style={{
-          margin: 0,
-          color: '#2d3748',
-          fontSize: '20px',
-          fontWeight: '600',
+                margin: 0,
+                color: '#2d3748',
+                fontSize: '20px',
+                fontWeight: '600',
               }}
             >
               Chainable
@@ -708,50 +709,50 @@ const IntroductionComponent = () => {
       >
         <div
           style={{
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '20px',
           }}
         >
           <div
-        style={{
-          width: '40px',
-          height: '40px',
-          backgroundColor: '#48bb78',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: '15px',
-          boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
-        }}
+            style={{
+              width: '40px',
+              height: '40px',
+              backgroundColor: '#48bb78',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '15px',
+              boxShadow: '0 4px 12px rgba(72, 187, 120, 0.3)',
+            }}
           >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
-        >
-          <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
-        </svg>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+            >
+              <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
+            </svg>
           </div>
           <h2 style={{ margin: 0, fontSize: '28px', color: '#333' }}>
-        Quick Start
+            Quick Start
           </h2>
         </div>
         <pre
           style={{
-        backgroundColor: '#f8f9fa',
-        color: '#333',
-        padding: '20px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        fontFamily: 'monospace',
-        margin: '0',
-        border: '1px solid #e9ecef',
-        overflow: 'auto',
+            backgroundColor: '#f8f9fa',
+            color: '#333',
+            padding: '20px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontFamily: 'monospace',
+            margin: '0',
+            border: '1px solid #e9ecef',
+            overflow: 'auto',
           }}
         >
           {`import useFetchWithCallbacks from 'use-fetch-with-callbacks';
@@ -795,54 +796,57 @@ const IntroductionComponent = () => {
       >
         <div
           style={{
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '20px',
           }}
         >
           <div
-        style={{
-          width: '40px',
-          height: '40px',
-          backgroundColor: '#1cd2d8',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: '15px',
-          boxShadow: '0 4px 12px rgba(28, 210, 216, 0.3)',
-        }}
+            style={{
+              width: '40px',
+              height: '40px',
+              backgroundColor: '#1cd2d8',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '15px',
+              boxShadow: '0 4px 12px rgba(28, 210, 216, 0.3)',
+            }}
           >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
           </div>
           <h2 style={{ margin: 0, fontSize: '28px', color: '#333' }}>
-        Callback Usage
+            Callback Usage
           </h2>
         </div>
         <p style={{ fontSize: '16px', color: '#4a5568', marginBottom: '16px' }}>
-          <strong>useFetchWithCallbacks</strong> lets you provide <strong>success</strong>, <strong>error</strong>, and <strong>loading</strong> callbacks for full control over the request lifecycle using the <code>RequestParams&lt;T&gt;</code> type:
+          <strong>useFetchWithCallbacks</strong> lets you provide{' '}
+          <strong>success</strong>, <strong>error</strong>, and{' '}
+          <strong>loading</strong> callbacks for full control over the request
+          lifecycle using the <code>RequestParams&lt;T&gt;</code> type:
         </p>
         <pre
           style={{
-        backgroundColor: '#f8f9fa',
-        color: '#333',
-        padding: '20px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        fontFamily: 'monospace',
-        margin: '0',
-        border: '1px solid #e9ecef',
-        overflow: 'auto',
+            backgroundColor: '#f8f9fa',
+            color: '#333',
+            padding: '20px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontFamily: 'monospace',
+            margin: '0',
+            border: '1px solid #e9ecef',
+            overflow: 'auto',
           }}
         >
           {`import useFetchWithCallbacks from 'use-fetch-with-callbacks';
@@ -867,21 +871,25 @@ const IntroductionComponent = () => {
         </pre>
         <ul
           style={{
-        paddingLeft: '20px',
-        lineHeight: '1.8',
-        fontSize: '16px',
-        color: '#666',
-        marginTop: '16px',
+            paddingLeft: '20px',
+            lineHeight: '1.8',
+            fontSize: '16px',
+            color: '#666',
+            marginTop: '16px',
           }}
         >
           <li>
-        <strong>Success callback:</strong> <code>onSuccess</code> is called with the response data when the request succeeds.
+            <strong>Success callback:</strong> <code>onSuccess</code> is called
+            with the response data when the request succeeds.
           </li>
           <li>
-        <strong>Error callback:</strong> <code>onError</code> is called with the error object if the request fails.
+            <strong>Error callback:</strong> <code>onError</code> is called with
+            the error object if the request fails.
           </li>
           <li>
-        <strong>Loading callback:</strong> <code>onLoading</code> is called with the loading state (<code>true</code> or <code>false</code>) on request start and finish.
+            <strong>Loading callback:</strong> <code>onLoading</code> is called
+            with the loading state (<code>true</code> or <code>false</code>) on
+            request start and finish.
           </li>
         </ul>
       </div>

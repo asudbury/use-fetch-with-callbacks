@@ -298,7 +298,6 @@ interface User {
 
 // T is automatically inferred as User
 const { response, fetchData } = useFetchWithCallbacks<User>('/users/1');
-
 ```
 
 ## 📄 License
