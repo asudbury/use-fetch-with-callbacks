@@ -49,15 +49,20 @@ import React, { useState } from 'react';
 import useFetchWithCallbacks from 'use-fetch-with-callbacks';
 
 function App() {
-  const { loading, error, fetchData } = useFetchWithCallbacks<string>('https://jsonplaceholder.typicode.com/users/1');
+  const { loading, error, fetchData } = useFetchWithCallbacks<string>(
+    'https://jsonplaceholder.typicode.com/users/1'
+  );
   const [firstResponse, setFirstResponse] = useState<string | null>(null);
   const [secondResponse, setSecondResponse] = useState<string | null>(null);
 
   const handleSuccess = (data?: string) => {
     setFirstResponse(data ?? null);
-    fetchData({ endpoint: 'https://jsonplaceholder.typicode.com/posts/1', onSuccess: (data?: string) => {
-      setSecondResponse(data ?? null);
-    }});
+    fetchData({
+      endpoint: 'https://jsonplaceholder.typicode.com/posts/1',
+      onSuccess: (data?: string) => {
+        setSecondResponse(data ?? null);
+      },
+    });
   };
 
   const handleFetch = () => {
@@ -112,17 +117,21 @@ fetchData({
 ```
 
 // Quick Start (Duplicate)
+
 ```typescript
-const { response, loading, error, fetchData } = useFetchWithCallbacks<User>('/users/1', {
-  baseUrl: 'https://api.example.com',
-  headers: { 'Authorization': 'Bearer token' }
-});
+const { response, loading, error, fetchData } = useFetchWithCallbacks<User>(
+  '/users/1',
+  {
+    baseUrl: 'https://api.example.com',
+    headers: { Authorization: 'Bearer token' },
+  }
+);
 
 // Fetch data with callbacks
 fetchData({
   onSuccess: (data?: User) => console.log('Success:', data),
-  onError: (error) => console.error('Error:', error),
-  onLoading: (loading) => console.log('Loading:', loading)
+  onError: error => console.error('Error:', error),
+  onLoading: loading => console.log('Loading:', loading),
 });
 ```
 
