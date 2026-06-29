@@ -4,7 +4,6 @@
 
 A powerful React hook for HTTP requests with comprehensive callback support, request chaining, and TypeScript integration.
 
-
 ## 📚 DeepWiki Project Knowledge Base
 
 > **Explore the full documentation, architecture, and deep technical notes for this project on DeepWiki:**
@@ -110,15 +109,20 @@ import React, { useState } from 'react';
 import useFetchWithCallbacks from 'use-fetch-with-callbacks';
 
 function App() {
-  const { loading, error, fetchData } = useFetchWithCallbacks<string>('https://jsonplaceholder.typicode.com/users/1');
+  const { loading, error, fetchData } = useFetchWithCallbacks<string>(
+    'https://jsonplaceholder.typicode.com/users/1'
+  );
   const [firstResponse, setFirstResponse] = useState<string | null>(null);
   const [secondResponse, setSecondResponse] = useState<string | null>(null);
 
   const handleSuccess = (data?: string) => {
     setFirstResponse(data ?? null);
-    fetchData({ endpoint: 'https://jsonplaceholder.typicode.com/posts/1', onSuccess: (data?: string) => {
-      setSecondResponse(data ?? null);
-    }});
+    fetchData({
+      endpoint: 'https://jsonplaceholder.typicode.com/posts/1',
+      onSuccess: (data?: string) => {
+        setSecondResponse(data ?? null);
+      },
+    });
   };
 
   const handleFetch = () => {
@@ -232,7 +236,6 @@ const api = useFetchWithCallbacks<ApiResponse>('/data', {
 });
 ```
 
-
 ## 📝 API Reference
 
 ### `useFetchWithCallbacks<T>(endpoint, options?)`
@@ -311,7 +314,6 @@ postData({
 });
 ```
 
-
 ### `ChainableRequest<T>`
 
 The `chain` API allows you to compose and execute multiple requests in sequence, with full callback support for each step and for the overall chain. Each chainable method can override the endpoint and provide per-request callbacks.
@@ -331,7 +333,9 @@ The `chain` API allows you to compose and execute multiple requests in sequence,
 **Example:**
 
 ```tsx
-const { chain } = useFetchWithCallbacks<User>('/users/1', { baseUrl: 'https://api.example.com' });
+const { chain } = useFetchWithCallbacks<User>('/users/1', {
+  baseUrl: 'https://api.example.com',
+});
 
 chain()
   .fetch({
@@ -414,13 +418,11 @@ interface User {
 
 // T is automatically inferred as User
 const { response, fetchData } = useFetchWithCallbacks<User>('/users/1');
-
 ```
 
 ## 📄 License
 
 MIT © Adrian Sudbury
-
 
 ## 🤝 Contributing
 
@@ -437,3 +439,11 @@ If you have any questions or need help, please [Open an issue](https://github.co
 ---
 
 Made with ❤️ for the React community
+
+## ❤️ Support My Work
+
+<a href="https://www.buymeacoffee.com/asudbury">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+       alt="Buy Me A Coffee"
+       height="60">
+</a>
